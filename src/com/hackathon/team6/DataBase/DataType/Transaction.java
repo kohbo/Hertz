@@ -5,12 +5,19 @@ import java.util.ArrayList;
 /**
  * Created by William on 1/24/2015.
  */
-public class Equipment {
+public class Transaction {
     int id;
+    int type;
+    int lastModified;
+    User createdBy;
+    User customer;
+    User lastEditedBy;
     int minImages;
-    ArrayList<Image[]> images;
+    ArrayList<Equipment> equipment;
 
-    Equipment(int id) {
+    Transaction(int id) {
         //TODO Get Data From DataBase
     }
+
+
 }
