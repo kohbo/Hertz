@@ -11,7 +11,7 @@
 
 # Uneeded android
 build.xml
-progaurd-project.txt
+proguard-project.txt
 
 
 # Built application files
