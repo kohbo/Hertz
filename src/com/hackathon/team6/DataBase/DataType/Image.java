@@ -5,11 +5,41 @@ package com.hackathon.team6.DataBase.DataType;
  */
 public class Image {
 
-    int id;
-    String Path;
-    String timeStamp;
 
+    private int id;
+    private String Path;
+    private String timeStamp;
+    private String GPSCords;
+
+    /**
+     * @param id
+     */
     Image(int id) {
-        //TODO Get Data From DataBase
+        this.id = id;
+    }
+
+
+    /*
+    * Getter's and Setter's
+    */
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public String getGPSCords() {
+        return GPSCords;
+    }
+
+    public void setGPSCords(String GPSCords) {
+        this.GPSCords = GPSCords;
     }
 }
