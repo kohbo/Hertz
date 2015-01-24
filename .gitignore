@@ -40,3 +40,4 @@ proguard/
 
 # Log Files
 *.log
+src/com/hackathon/team6/DataBase/query.java
