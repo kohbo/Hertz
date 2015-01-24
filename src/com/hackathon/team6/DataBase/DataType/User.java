@@ -5,12 +5,16 @@ package com.hackathon.team6.DataBase.DataType;
  */
 public class User {
 
+
     int id;
     String password;
-    String Role;
+    String Role;     //TODO convert to Enum
     String Name;
+
 
     User(int id) {
         //TODO Get Data From DataBase
     }
+
+
 }

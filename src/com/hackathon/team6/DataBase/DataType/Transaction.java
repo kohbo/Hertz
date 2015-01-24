@@ -7,11 +7,13 @@ import java.util.ArrayList;
  */
 public class Transaction {
     int id;
-    int type;
-    int lastModified;
+    int type;   //TODO convert to Enum
+    String lastModified;
+
     User createdBy;
     User customer;
     User lastEditedBy;
+
     int minImages;
     ArrayList<Equipment> equipment;
 

@@ -7,10 +7,13 @@ import java.util.ArrayList;
  */
 public class Equipment {
     int id;
-    int minImages;
     ArrayList<Image[]> images;
+    String Location;  //ToDO determine Data Type
+
 
     Equipment(int id) {
+
         //TODO Get Data From DataBase
     }
+
 }
