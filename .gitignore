@@ -11,7 +11,7 @@
 
 # Uneeded android
 build.xml
-progaurd-project.txt
+proguard-project.txt
 
 
 # Built application files
@@ -40,3 +40,4 @@ proguard/
 
 # Log Files
 *.log
+src/com/hackathon/team6/DataBase/query.java
