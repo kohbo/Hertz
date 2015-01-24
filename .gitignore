@@ -1,3 +1,19 @@
+# Eclipse project files
+.classpath
+.project
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+*.properties
+.idea/
+
+# Uneeded android
+build.xml
+progaurd-project.txt
+
+
 # Built application files
 *.apk
 *.ap_
