@@ -7,22 +7,53 @@ package com.hackathon.team6.DataBase.DataType;
 public class User {
 
 
-    int id;
-    String password;
-    String Name;
-    role currentRole;
+    private int id;
+    private String password;
+    private String Name;
+    private role currentRole;
 
-    enum role {
+    private enum role {
         Customer,
         Sales,
         Repair
     }
 
-
-
-
     User(int id) {
+        this.id = id;
+
         //TODO Get Data From DataBase
+    }
+
+    /*
+    * Getter's and Setter's
+    */
+
+    public int getId() {
+        return id;
+    }
+
+    public role getCurrentRole() {
+        return currentRole;
+    }
+
+    public void setCurrentRole(role currentRole) {
+        this.currentRole = currentRole;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

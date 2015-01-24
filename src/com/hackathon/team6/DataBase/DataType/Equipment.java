@@ -7,15 +7,41 @@ import java.util.ArrayList;
  */
 public class Equipment {
 
-    int id;
-    ArrayList<Image[]> images;
-    String Location;  //ToDO determine Data Type
+    private int id;
+    private ArrayList<Image[]> images;
+    private String Location;  //ToDO determine Data Type
 
 
     Equipment(int id) {
-
+        this.id = id;
         //TODO Get Data From DataBase
-
     }
+
+
+    /*
+    * Getter's and Setter's
+    */
+
+    public int getId() {
+        return id;
+    }
+
+    public ArrayList<Image[]> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<Image[]> images) {
+        this.images = images;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+
 
 }
