@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Home page -->
     <string name="app_name">Quick Assess</string>
     <string name="Rental">Rental</string>
     <string name="Return">Return</string>
     <string name="Sales">Sales</string>
     <string name="FieldService">Field Service</string>
     <string name="EquipmentHistory">Equipment History</string>
+
+
 </resources>
