@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by William on 1/24/2015.
  */
 public class Equipment {
+
     int id;
     ArrayList<Image[]> images;
     String Location;  //ToDO determine Data Type
@@ -14,6 +15,7 @@ public class Equipment {
     Equipment(int id) {
 
         //TODO Get Data From DataBase
+
     }
 
 }

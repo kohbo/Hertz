@@ -7,7 +7,16 @@ import java.util.ArrayList;
  */
 public class Transaction {
     int id;
-    int type;   //TODO convert to Enum
+
+    enum type {
+        Rental,
+        Return,
+        Sales,
+        FieldService
+    }
+
+    type currentType;
+
     String lastModified;
 
     User createdBy;
@@ -18,7 +27,36 @@ public class Transaction {
     ArrayList<Equipment> equipment;
 
     Transaction(int id) {
+
         //TODO Get Data From DataBase
+
+    }
+
+    /**
+     * Sets Min Images baced on Transaction Type
+     */
+    public void setMinNumberImage() {
+        switch (currentType) {
+            case Rental:
+                minImages = 2;
+                break;
+
+            case Return:
+                minImages = 4;
+                break;
+
+            case Sales:
+                minImages = 6;
+                break;
+
+            case FieldService:
+                minImages = 8;
+                break;
+
+            default:
+                minImages = 12;
+                break;
+        }
     }
 
 

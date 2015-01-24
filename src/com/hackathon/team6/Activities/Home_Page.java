@@ -37,4 +37,6 @@ public class Home_Page extends Activity {
         equipment_history = (Button)findViewById(R.id.EquipmentHistory);
 
     }
+
+
 }
