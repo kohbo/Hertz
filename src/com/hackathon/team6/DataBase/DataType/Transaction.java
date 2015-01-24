@@ -26,14 +26,14 @@ public class Transaction {
     int minImages;
     ArrayList<Equipment> equipment;
 
-    Transaction(int id) {
+    public Transaction(int id) {
 
         //TODO Get Data From DataBase
 
     }
 
     /**
-     * Sets Min Images baced on Transaction Type
+     * Sets Min Images based on Transaction Type
      */
     public void setMinNumberImage() {
         switch (currentType) {
