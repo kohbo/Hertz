@@ -9,7 +9,7 @@ public class Equipment {
 
     private int id;
     private ArrayList<Image[]> images;
-    private String Location;  //ToDO determine Data Type
+    private ArrayList<Transaction> transactions;
 
 
     public Equipment(int id) {
@@ -33,14 +33,11 @@ public class Equipment {
         this.images = images;
     }
 
-    public String getLocation() {
-        return Location;
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
     }
-
-
-
 }

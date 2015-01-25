@@ -1,11 +1,10 @@
 package com.hackathon.team6.dataBase.dataType;
 
-import java.util.ArrayList;
+
 
 /**
  * Created by William on 1/24/2015.
  */
-
 public class User {
 
 
@@ -13,20 +12,17 @@ public class User {
     private String password;
     private String Name;
     private role currentRole;
-    private ArrayList<Transaction> tranactions;
+
 
     private enum role {
-        Customer,
+        Retail,
         Sales,
-        Repair
+        Service
     }
 
     public User(int id) {
         this.id = id;
-
         //TODO Get Data From DataBase
-
-
     }
 
     /*
@@ -61,11 +57,5 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<Transaction> getTranactions() {
-        return tranactions;
-    }
 
-    public void setTranactions(ArrayList<Transaction> tranactions) {
-        this.tranactions = tranactions;
-    }
 }

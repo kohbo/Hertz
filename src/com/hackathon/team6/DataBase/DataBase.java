@@ -11,7 +11,7 @@ import com.hackathon.team6.dataBase.dataType.User;
 public class DataBase {
 
     public DataBase() {
-        init();
+
     }
 
     private void init() {
@@ -92,18 +92,54 @@ public class DataBase {
         }
     }
 
+
     /**
      * Queries User Data and Creates User Class
      *
      * @param id
      * @return
      */
-    public static User queryUser(int id) {
-
+    public User queryUser(int id) {
         User user = new User(id);
-
-
         return user;
+    }
+
+    /**
+     * Queries Transaction Data and Creates Transaction Class
+     *
+     * @param id
+     * @return
+     */
+    public Transaction queryTransaction(int id) {
+
+        Transaction transaction = new Transaction(id);
+
+
+        return transaction;
+    }
+
+    /**
+     * Queries  Equipment Data and Creates Equipment Class
+     *
+     * @param id
+     * @return
+     */
+    public  Equipment queryEquipment(int id) {
+        Equipment  equipment = new Equipment(id);
+        return equipment;
+    }
+
+
+    /**
+     * Queries Image Data and Creates Image Class
+     *
+     * @param id
+     * @return
+     */
+        public Image queryImage(int id) {
+
+        Image image = new Image(id);
+        return image;
     }
     
 
