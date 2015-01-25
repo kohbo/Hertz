@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Colin on 1/25/2015.
  */
-public class getTransactionsListWorker extends AsyncTask<Void, Void, Void> {
+public class GetTransactionsListWorker extends AsyncTask<Void, Void, Void> {
 
     WeakReference<ProgressDialog> toDismiss;
     WeakReference<ActivityWithLoading> onFinish;
@@ -20,7 +20,7 @@ public class getTransactionsListWorker extends AsyncTask<Void, Void, Void> {
     int eic;
     List<Transaction> transactions;
 
-    public getTransactionsListWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int eic) {
+    public GetTransactionsListWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int eic) {
         super();
         toDismiss = new WeakReference<ProgressDialog>(progressDialog);
         onFinish = new WeakReference<ActivityWithLoading>(home_page);

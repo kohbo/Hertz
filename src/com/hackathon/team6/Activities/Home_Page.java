@@ -15,9 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.hackathon.team6.R;
 import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
-import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.dataBase.dataType.User;
-import com.hackathon.team6.utlities.UnactiveLoad;
+import com.hackathon.team6.dataBase.queryTasks.GetTransactionsListWorker;
+import com.hackathon.team6.dataBase.queryTasks.GetTransactionsWorker;
 import com.hackathon.team6.utlities.Utilities;
 
 public class Home_Page extends ActivityWithLoading {
@@ -35,6 +35,8 @@ public class Home_Page extends ActivityWithLoading {
     Button mSalesButton;
     Button mFieldService;
     Button mEquipmentHistory;
+
+    boolean list = true;
 
 
     /**
@@ -77,31 +79,31 @@ public class Home_Page extends ActivityWithLoading {
         mRentalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC();
+                promptForEIC(false);
             }
         });
         mReturnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC();
+                promptForEIC(false);
             }
         });
         mSalesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC();
+                promptForEIC(false);
             }
         });
         mFieldService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC();
+                promptForEIC(false);
             }
         });
         mEquipmentHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToHistory();
+                promptForEIC(true);
             }
         });
 
@@ -115,23 +117,30 @@ public class Home_Page extends ActivityWithLoading {
         startActivity(intent);
     }
 
-    protected void verifyEIC(int eic){
+    protected void verifyEIC(int eic, boolean list){
         ProgressDialog mDialog = startLoad();
-        UnactiveLoad unactiveLoad = new UnactiveLoad(this,mDialog);
-        tasks.add(unactiveLoad);
-        unactiveLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        if(list){
+            GetTransactionsListWorker task = new GetTransactionsListWorker(this,mDialog,eic);
+            tasks.add(task);
+            task.execute();
+        }
+        else{
+            GetTransactionsWorker task = new GetTransactionsWorker(this,mDialog,eic);
+            tasks.add(task);
+            task.execute();
+        }
     }
 
     @Override
     public void onFinishLoad(int result) {
         if(result == REQUEST_CODE_TRANSACTION){
-            if(Image_Capture.transactionPassing != null){
+            if(Image_Capture.transaction != null){
                 goToCapture();
             }
             else Utilities.showToast(getApplication(),R.string.Error_EIC_not_found);
         }
         else if(result == REQUEST_CODE_LIST){
-            if(Image_Capture.transactionPassing != null){
+            if(History_Activity.transactions != null){
                 goToHistory();
             }
             else Utilities.showToast(getApplication(),R.string.Error_EIC_not_found);
@@ -152,7 +161,7 @@ public class Home_Page extends ActivityWithLoading {
         tasks.clear();
     }
 
-    private void promptForEIC(){
+    private void promptForEIC(final boolean list){
         String title = getResources().getString(R.string.Home_Page_Dialog_Capture_title);
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
@@ -166,7 +175,7 @@ public class Home_Page extends ActivityWithLoading {
         });
         alert.setPositiveButton(R.string.Home_Page_Dialog_Capture_positive, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                verifyEIC(Integer.parseInt(input.getText().toString()));
+                verifyEIC(Integer.parseInt(input.getText().toString()),list);
             }
         });
         final AlertDialog alertDialog = alert.create();

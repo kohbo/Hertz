@@ -32,9 +32,6 @@ public class History_Activity extends Activity {
         mHistoryTable = (TableLayout)findViewById(R.id.history_dynamicTable);
         mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
         mEIC_Number.setText(Home_Page.user.getId());
-
-        DataBase query = DataBase.getInstance();
-        List<Transaction> transactions = query.queryEquipment(Home_Page.user.getId());
         
         for(Transaction t : transactions){
             createRow(t.getCurrentType().toString(), t.getCreated_on(),String.valueOf(t.getImageListSize()));

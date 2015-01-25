@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by Colin on 1/25/2015.
  */
-public class getTransactionsWorker extends AsyncTask<Void, Void, Void> {
+public class GetTransactionsWorker extends AsyncTask<Void, Void, Void> {
 
     WeakReference<ProgressDialog> toDismiss;
     WeakReference<ActivityWithLoading> onFinish;
@@ -19,7 +19,7 @@ public class getTransactionsWorker extends AsyncTask<Void, Void, Void> {
     int eic;
     Transaction transaction;
 
-    public getTransactionsWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int eic) {
+    public GetTransactionsWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int eic) {
         super();
         toDismiss = new WeakReference<ProgressDialog>(progressDialog);
         onFinish = new WeakReference<ActivityWithLoading>(home_page);
@@ -42,7 +42,7 @@ public class getTransactionsWorker extends AsyncTask<Void, Void, Void> {
 
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
-            Image_Capture.transactionPassing = transaction;
+            Image_Capture.transaction = transaction;
             if(transaction != null){
                 home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_TRANSACTION);
             }
