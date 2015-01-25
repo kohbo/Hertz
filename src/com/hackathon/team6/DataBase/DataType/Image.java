@@ -9,6 +9,7 @@ public class Image {
 
     private int id; //timeStamp
     private Uri uri;
+    private String loc;
 
     /**
      * @param id
@@ -16,6 +17,10 @@ public class Image {
     public Image(int id, Uri uri) {
         this.id = id;
         this.uri = uri;
+    }
+
+    public Image(String loc){
+        this.loc = loc;
     }
 
 
@@ -29,5 +34,9 @@ public class Image {
 
     public Uri getUri() {
         return uri;
+    }
+
+    public String getloc(){
+        return loc;
     }
 }
