@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.hackathon.team6.R;
 import com.hackathon.team6.dataBase.DataBase;
+import com.hackathon.team6.dataBase.dataType.User;
 import com.hackathon.team6.utlities.Utilities;
 
 /**
@@ -64,12 +65,14 @@ public class Login_Page extends Activity {
             return;
         }
 
-        if(!DataBase.validateUser(userIdNumber,password)){
+        User user = DataBase.validateUser(userIdNumber,password);
+        if(user == null){
             Utilities.showToast(this,R.string.Error_invalid_id_password);
             return;
         }
 
-        Intent intent = new Intent(this,Login_Page.class);
+        Home_Page.userPassing = user;
+        Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
 
     }

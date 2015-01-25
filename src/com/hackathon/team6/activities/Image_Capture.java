@@ -23,6 +23,8 @@ import java.util.ArrayList;
  */
 public class Image_Capture extends GPSActivity {
 
+    public static Transaction transactionPassing;
+
     Transaction transaction;
 
     Button mSubmit;
