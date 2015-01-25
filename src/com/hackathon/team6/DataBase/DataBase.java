@@ -136,7 +136,7 @@ public class DataBase {
      */
         public Image queryImage(int id) {
 
-        Image image = new Image(id);
+        Image image = new Image(id,null);
         return image;
     }
 

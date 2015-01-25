@@ -27,6 +27,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     public GridViewAdapter(Context context, Transaction transaction) {
         super();
+        this.context = context;
         this.transaction = transaction;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         tasks = new ArrayList<AsyncTask>();
@@ -44,7 +45,7 @@ public class GridViewAdapter extends BaseAdapter {
         if(transaction == null || transaction.getImages() == null){
             return 0;
         }
-        return transaction.getImages().size();
+        return transaction.getImages().size()+1;
     }
 
     @Override
@@ -58,16 +59,16 @@ public class GridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
         View newView = null;
 
-        if(i == getCount() -1){
-            //this is the add more picture grid
-            //newView = inflater.inflate(R.layout.gridview_add_item,viewGroup,false);
-            //TextView tv = (TextView) newView.findViewById(R.id.gridView_add_item_textView);
-            //tv.setText(context.getResources().getString(R.string.DefectPictureSelection_add));
+        if(i == 0){
+            newView = inflater.inflate(R.layout.gridview_add_item,viewGroup,false);
         }
         else {
+            //-1 accounts for add photo position
+            final int position = i - 1;
+
             newView = inflater.inflate(R.layout.gridview_item,viewGroup,false);
 
             ImageView iv = (ImageView) newView.findViewById(R.id.gridView_item_imageView);
@@ -77,13 +78,13 @@ public class GridViewAdapter extends BaseAdapter {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    transaction.getImages().remove(i);
+                    transaction.getImages().remove(position);
                     notifyDataSetChanged();
                 }
             });
 
-            if(transaction.getImages().get(i).getUri() != null){
-                tasks.add(BitmapManager.setImageView(iv, context, transaction.getImages().get(i).getUri(), 120, 120));
+            if(transaction.getImages().get(position).getUri() != null){
+                tasks.add(BitmapManager.setImageView(iv, context, transaction.getImages().get(position).getUri(), 120, 120));
             }
 
             iv.setFocusable(false);
