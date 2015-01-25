@@ -1,5 +1,6 @@
 package com.hackathon.team6.utlities.image;
 
+import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;

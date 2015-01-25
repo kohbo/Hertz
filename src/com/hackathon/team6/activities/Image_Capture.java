@@ -2,31 +2,71 @@ package com.hackathon.team6.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.dataType.Image;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
+import com.hackathon.team6.utlities.adapters.GridViewAdapter;
+import com.hackathon.team6.utlities.gps.GPSActivity;
+import com.hackathon.team6.utlities.image.Image_Activity;
+import com.hackathon.team6.utlities.image.PictureFileManager;
+
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by brian on 1/24/2015.
  */
-public class Image_Capture extends Activity {
+public class Image_Capture extends GPSActivity {
+
+    Transaction transaction;
+
     Button mSubmit;
     TextView mIC_Number;
+    TextView mGPS;
     TextView mRental;
     TextView mImagesCaptured;
+    GridView mPictureGridView;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.loginscreen);
+        //TODO
+        transaction = new Transaction(0);
+        transaction.setImages(new ArrayList<Image>());
+        //TODO
+
+        setContentView(R.layout.imagecapture);
 
         mSubmit = (Button)findViewById(R.id.login_page_button);
         mIC_Number = (TextView) findViewById(R.id.image_capture_ICNumber);
         mRental = (TextView) findViewById(R.id.image_capture_rental_type);
         mImagesCaptured = (TextView) findViewById(R.id.image_capture_images_captured);
+        mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
+        mGPS = (TextView)findViewById(R.id.image_capture_gps);
+
+        setNewGPS(mGPS,transaction);
+
+        updateCount();
+
+        mRental.setText(transaction.getCurrentType().name);
+
+        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction));
+        mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i == 0){
+                    showToast("Clicked add picture");
+                }
+                else {
+                    showToast("Clicked on picture" + i);
+                }
+            }
+        });
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,9 +75,30 @@ public class Image_Capture extends Activity {
             }
         });
     }
+
+    //temp
+    private void showToast(String message){
+        Utilities.showToast(this, message);
+    }
+
+    private void updateCount(){
+        mImagesCaptured.setText(transaction.getImages().size() + getResources().getString(R.string.Capture_Screen_image_count_postfix));
+    }
+
     protected void submitReport(){
         Utilities.showToast(this, R.string.Capture_Screen_success);
         Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void saveImage(Uri uri) {
+        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+        updateCount();
+    }
+
+    @Override
+    protected String getSaveDir() {
+        return PictureFileManager.getDir() + transaction.getId() + File.separator;
     }
 }

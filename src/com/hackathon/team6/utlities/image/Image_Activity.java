@@ -1,5 +1,6 @@
 package com.hackathon.team6.utlities.image;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,13 +17,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Image_Activity extends GPSActivity {
+public abstract class Image_Activity extends Activity {
     static private Uri outputFileUri;
 
     protected ArrayList<AsyncTask> tasks;
     final int PICTURE_URI_REQUEST = 1;
-
-    private File dir;
 
     @Override
     protected void onStart() {
@@ -46,14 +45,16 @@ public abstract class Image_Activity extends GPSActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tasks = new ArrayList<AsyncTask>();
-        dir = new File(PictureFileManager.getDir());
+
     }
 
     protected abstract void saveImage(Uri uri);
+    protected abstract String getSaveDir();
 
     private void setupOutputFileUri(){
         // Determine Uri of camera image to save.
         final String fname = "img_"+ System.currentTimeMillis() + ".jpg";
+        File dir = new File(getSaveDir());
         final File sdImageMainDirectory = new File(dir, fname);
         outputFileUri = Uri.fromFile(sdImageMainDirectory);
 
