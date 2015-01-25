@@ -27,6 +27,7 @@ public class Transaction {
     private User createdBy;
     private User currentUser;
     private User lastEditedBy;
+    private Equipment equipmentId;
 
     float latLocation;
     float longLocation;

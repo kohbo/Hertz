@@ -64,7 +64,7 @@ public class Login_Page extends Activity {
             return;
         }
 
-        if(!DataBase.validateUser(userIdNumber,password)){
+        if (DataBase.validateUser(userIdNumber, password) == null) {
             Utilities.showToast(this,R.string.Error_invalid_id_password);
             return;
         }
