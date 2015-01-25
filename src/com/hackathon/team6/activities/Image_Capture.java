@@ -4,7 +4,10 @@ import android.app.ActionBar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
 import com.hackathon.team6.R;
 import com.hackathon.team6.dataBase.dataType.Image;
 import com.hackathon.team6.dataBase.dataType.Transaction;
@@ -14,7 +17,6 @@ import com.hackathon.team6.utlities.gps.GPSActivity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.io.File;
-import java.util.ArrayList;
 
 /**
  * Created by brian on 1/24/2015.
@@ -42,37 +44,35 @@ public class Image_Capture extends GPSActivity {
         mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
 
-        mSubmit = (Button)findViewById(R.id.image_capture_submit_button);
+        mSubmit = (Button) findViewById(R.id.image_capture_submit_button);
         mRental = (TextView) findViewById(R.id.image_capture_rental_type);
         mImagesCaptured = (TextView) findViewById(R.id.image_capture_images_captured);
         mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
-        mGPS = (TextView)findViewById(R.id.image_capture_gps);
+        mGPS = (TextView) findViewById(R.id.image_capture_gps);
 
-        if(transaction.getLoc_lat() == 0) {
+        if (transaction.getLoc_lat() == 0) {
             setNewGPS(mGPS, transaction);
         }
 
         updateCount();
 
-        if(transaction != null && transaction.getCurrentType() != null){
+        if (transaction != null && transaction.getCurrentType() != null) {
             mRental.setText(transaction.getCurrentType().name);
         }
 
 
-        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction,true,this));
+        mPictureGridView.setAdapter(new GridViewAdapter(this, transaction, true, this));
 
         mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i == 0){
-                    if(transaction.getImages().size() < Transaction.MAX_PICTURES){
+                if (i == 0) {
+                    if (transaction.getImages().size() < Transaction.MAX_PICTURES) {
                         openImageIntent();
-                    }
-                    else {
+                    } else {
                         Utilities.showToast(getApplicationContext(), R.string.Error_max_pictures);
                     }
-                }
-                else {
+                } else {
                     showToast("Clicked on picture" + i);
                 }
             }
@@ -87,31 +87,30 @@ public class Image_Capture extends GPSActivity {
     }
 
     //temp
-    private void showToast(String message){
+    private void showToast(String message) {
         Utilities.showToast(this, message);
     }
 
     @Override
-    public void updateCount(){
+    public void updateCount() {
         String line1 = transaction.getImages().size() + "/" + Transaction.MAX_PICTURES + " " +
                 getResources().getString(R.string.Capture_Screen_image_count_postfix);
         String line2 = transaction.getMinImages() + " min for " + transaction.getCurrentType().name;
         mImagesCaptured.setText(line1 + "\n" + line2);
     }
 
-    protected void submitReport(){
-        if(transaction.getImages().size() > transaction.getMinImages()){
+    protected void submitReport() {
+        if (transaction.getImages().size() > transaction.getMinImages()) {
             Utilities.showToast(this, R.string.Capture_Screen_success);
             finish();
-        }
-        else {
+        } else {
             Utilities.showToast(this, R.string.Error_min_pictures);
         }
     }
 
     @Override
     protected void saveImage(Uri uri) {
-        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+        transaction.getImages().add(new Image((int) System.currentTimeMillis(), uri));
         updateCount();
     }
 

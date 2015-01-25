@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by William on 1/24/2015.
  */
-public class DataBase   {
+public class DataBase {
 
 /*
     Host: http://kohding.net/hertz/
@@ -43,9 +43,10 @@ public class DataBase   {
     private DataBase() {
 
     }
+
     private static final String url = "http://Kohding.net/hertz/";
 
-    private static String request(String command){
+    private static String request(String command) {
         StringBuffer buffer = new StringBuffer();
         try {
             // Apache HTTP Reqeust
@@ -54,18 +55,17 @@ public class DataBase   {
 
             HttpResponse resp = client.execute(post);
             // read the response
-            InputStream is  = resp.getEntity().getContent();
+            InputStream is = resp.getEntity().getContent();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder str = new StringBuilder();
             String line = null;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 str.append(line + "\n");
             }
             is.close();
             buffer.append(str.toString());
 
-        }
-        catch(Throwable t) {
+        } catch (Throwable t) {
             t.printStackTrace();
         }
         return buffer.toString();
@@ -86,10 +86,10 @@ public class DataBase   {
      * @return User
      */
     public static User validateUser(int id, String password) {
-        String command = url+"/login.php?employee_id="+id+"&pass="+password;
+        String command = url + "/login.php?employee_id=" + id + "&pass=" + password;
         User user = null;
         try {
-             user = JsonParser.parseUser(request(command), id, password);
+            user = JsonParser.parseUser(request(command), id, password);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -105,7 +105,7 @@ public class DataBase   {
      * @return
      */
     public List<Transaction> queryEquipment(int id) {
-        String command = url+"get_ic_assessments.php?ic="+id;
+        String command = url + "get_ic_assessments.php?ic=" + id;
         List<Transaction> equipment = null;
         try {
             equipment = JsonParser.parseEquipment(request(command));
@@ -127,7 +127,7 @@ public class DataBase   {
      * @return
      */
     public Transaction queryTransaction(int id) {
-        String command = url+"get_assessment_info.php?assessment_id="+id;
+        String command = url + "get_assessment_info.php?assessment_id=" + id;
         try {
             return JsonParser.parseTransaction(request(command));
         } catch (JsonParseException e) {
@@ -148,9 +148,6 @@ public class DataBase   {
         //Image image = new Image(id);
         return null;
     }
-
-
-
 
 
     /*********************************************

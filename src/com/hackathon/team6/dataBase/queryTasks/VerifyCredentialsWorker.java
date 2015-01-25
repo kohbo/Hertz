@@ -20,7 +20,7 @@ public class VerifyCredentialsWorker extends AsyncTask<Void, Void, Void> {
     String pass;
     User user;
 
-    public VerifyCredentialsWorker(ActivityWithLoading home_page, ProgressDialog progressDialog,int id, String pass ) {
+    public VerifyCredentialsWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int id, String pass) {
         super();
         toDismiss = new WeakReference<ProgressDialog>(progressDialog);
         onFinish = new WeakReference<ActivityWithLoading>(home_page);
@@ -30,7 +30,7 @@ public class VerifyCredentialsWorker extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        user = DataBase.validateUser(id,pass);
+        user = DataBase.validateUser(id, pass);
         return null;
     }
 
@@ -38,17 +38,16 @@ public class VerifyCredentialsWorker extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         ProgressDialog progressDialog = toDismiss.get();
-        if(progressDialog != null){
+        if (progressDialog != null) {
             progressDialog.dismiss();
         }
 
         ActivityWithLoading home_page = onFinish.get();
-        if(home_page != null){
-            if(user != null){
+        if (home_page != null) {
+            if (user != null) {
                 Home_Page.user = user;
                 home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_USER);
-            }
-            else {
+            } else {
                 home_page.failLoad();
             }
         }

@@ -17,3 +17,4 @@ new_assessment.php (Must be POST method request)
 
 mail_assessment.php
 	assessment_id, email, employee_id
+
