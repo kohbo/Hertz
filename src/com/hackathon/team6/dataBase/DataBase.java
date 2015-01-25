@@ -25,20 +25,26 @@ public class DataBase   {
 
 /*
     Host: http://kohding.net/hertz/
-
     Page
     get_ic_assessments.php
             ic
-
     get_assessment_info.php
             assessment_id
-
     login.php
             employee_id, pass
-
     new_assessment.php (Must be POST method request)
     employee_id, customer_id, ic, type, images
 */
+
+    private static DataBase ourInstance = new DataBase();
+
+    public static DataBase getInstance() {
+        return ourInstance;
+    }
+
+    private DataBase() {
+
+    }
     private static final String url = "http://Kohding.net/hertz/";
 
     private static String request(String command){
@@ -59,7 +65,7 @@ public class DataBase   {
             }
             is.close();
             buffer.append(str.toString());
-            // Done!
+
         }
         catch(Throwable t) {
             t.printStackTrace();
@@ -83,7 +89,9 @@ public class DataBase   {
      */
     public static User validateUser(int id, String password) {
         String command = url+"/login.php?employee_id="+id+"&pass="+password;
-        return JsonParser.parseUser(request(command));
+        return JsonParser.PUser(request(command), id, password);
+
+        // return JsonParser.parseUser(request(command));
     }
 
     /**
@@ -94,8 +102,9 @@ public class DataBase   {
      */
     public  Equipment queryEquipment(int id) {
         String command = url+"get_ic_assessments.php?ic="+id;
-        //return JsonParser.parseEquipment(request(command));
-        return null;
+        Equipment equipment = JsonParser.parseEquipment(request(command));
+
+        return equipment;
     }
 
 
@@ -107,11 +116,8 @@ public class DataBase   {
      */
     public Transaction queryTransaction(int id) {
         String command = url+"get_assessment_info.php?assessment_id="+id;
-        //return JsonParser.parseTransaction(request(command));
-        return null;
+        return JsonParser.parseTransaction(request(command));
     }
-
-
 
     /**
      * Queries Image Data and Creates Image Class
@@ -119,7 +125,7 @@ public class DataBase   {
      * @param id
      * @return
      */
-        public Image queryImage(int id) {
+    public Image queryImage(int id) {
         //Image image = new Image(id);
         return null;
     }
@@ -135,7 +141,7 @@ public class DataBase   {
      *********************************************/
 
 
-   /**
+    /**
      * Updates ALL User Data
      *
      * @param user

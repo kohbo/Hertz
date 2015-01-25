@@ -1,5 +1,6 @@
 package com.hackathon.team6.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
  */
 public class Image_Capture extends GPSActivity {
 
+    public static Transaction transactionPassing;
+
     Transaction transaction;
 
     Button mSubmit;
@@ -35,13 +38,19 @@ public class Image_Capture extends GPSActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagecapture);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.Capture_Screen_Title);
+        }
+
         mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
         //TODO
-        transaction = new Transaction(0);
-        transaction.setImages(new ArrayList<Image>());
-        transaction.setCurrentType(Transaction.type.Rental);
-        mIC_Number.setText("999-99-9999");
+//        transaction = new Transaction(0);
+//        transaction.setImages(new ArrayList<Image>());
+//        transaction.setCurrentType(Transaction.type.Rental);
+//        mIC_Number.setText("999-99-9999");
         //TODO
 
 
@@ -52,9 +61,9 @@ public class Image_Capture extends GPSActivity {
         mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
         mGPS = (TextView)findViewById(R.id.image_capture_gps);
 
-        if(transaction.getLongLocation() == 0) {
-            setNewGPS(mGPS, transaction);
-        }
+//        if(transaction.getLongLocation() == 0) {
+//            setNewGPS(mGPS, transaction);
+//        }
 
         updateCount();
 
@@ -89,7 +98,7 @@ public class Image_Capture extends GPSActivity {
     }
 
     private void updateCount(){
-        mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
+//        mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
     }
 
     protected void submitReport(){
@@ -100,7 +109,7 @@ public class Image_Capture extends GPSActivity {
 
     @Override
     protected void saveImage(Uri uri) {
-        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+//        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
         updateCount();
     }
 
