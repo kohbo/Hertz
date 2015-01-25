@@ -13,6 +13,8 @@
     <string name="Error.HomePage">Implement activity intents</string>
     <string name="Error.EIC_not_found">Equipment Identification Code Not Found</string>
     <string name="Error.timeout">Contact attempt to datatbase has timed out</string>
+    <string name="Error.min_pictures">Error: minimum pictures not met</string>
+    <string name="Error.max_pictures">Error: maximum pictures reached</string>
 
     <!-- Login Page Strings -->
     <string name="Login_Page.login_button">Login</string>

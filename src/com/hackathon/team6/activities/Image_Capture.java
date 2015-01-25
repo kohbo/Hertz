@@ -73,7 +73,12 @@ public class Image_Capture extends GPSActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
-                    openImageIntent();
+                    if(transaction.getImages().size() < Transaction.MAX_PICTURES){
+                        openImageIntent();
+                    }
+                    else {
+                        Utilities.showToast(getApplicationContext(), R.string.Error_max_pictures);
+                    }
                 }
                 else {
                     showToast("Clicked on picture" + i);
@@ -102,8 +107,13 @@ public class Image_Capture extends GPSActivity {
     }
 
     protected void submitReport(){
-        Utilities.showToast(this, R.string.Capture_Screen_success);
-        finish();
+        if(transaction.getImages().size() > transaction.getMinImages()){
+            Utilities.showToast(this, R.string.Capture_Screen_success);
+            finish();
+        }
+        else {
+            Utilities.showToast(this, R.string.Error_min_pictures);
+        }
     }
 
     @Override
