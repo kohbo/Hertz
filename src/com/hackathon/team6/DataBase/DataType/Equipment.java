@@ -1,4 +1,4 @@
-package com.hackathon.team6.DataBase.DataType;
+package com.hackathon.team6.dataBase.dataType;
 
 import java.util.ArrayList;
 

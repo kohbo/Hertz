@@ -1,12 +1,10 @@
-package com.hackathon.team6.Activities;
+package com.hackathon.team6.activities;
 
 import android.app.Activity;
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.hackathon.team6.R;
 
 public class Home_Page extends Activity {
