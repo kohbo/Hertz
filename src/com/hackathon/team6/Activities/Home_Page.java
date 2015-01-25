@@ -1,6 +1,7 @@
 package com.hackathon.team6.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -68,20 +69,33 @@ public class Home_Page extends Activity {
         });
 
 }
+    /*
+    Generates report of type
+     */
     protected void rentReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
+        Intent intent = new Intent(this,Image_Capture.class);
+        startActivity(intent);
     }
     protected void returnReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
+        Intent intent = new Intent(this,Image_Capture.class);
+        startActivity(intent);
     }
     protected void salesReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
+        Intent intent = new Intent(this,Image_Capture.class);
+        startActivity(intent);
     }
     protected void fieldServiceReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
+        Intent intent = new Intent(this,Image_Capture.class);
+        startActivity(intent);
     }
     protected void equipmentHistoryReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
+        Intent intent = new Intent(this,Image_Capture.class);
+        startActivity(intent);
     }
 }
 
