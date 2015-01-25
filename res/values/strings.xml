@@ -11,6 +11,8 @@
     <string name="Error.invalid_id_password">Invalid Id Password Combination</string>
     <string name="Error.GPS">GPS Disabled</string>
     <string name="Error.HomePage">Implement activity intents</string>
+    <string name="Error.EIC_not_found">Equipment Identification Code Not Found</string>
+    <string name="Error.timeout">Contact attempt to datatbase has timed out</string>
 
     <!-- Login Page Strings -->
     <string name="Login_Page.login_button">Login</string>
@@ -19,6 +21,12 @@
     <string name="Login_Page.logo_description">Hertz Logo</string>
 
     <!-- Home Page Strings -->
+    <string name="Home_Page.Title">Home Screen</string>
+    <string name="Home_Page.Dialog.Capture.positive">Go</string>
+    <string name="Home_Page.Dialog.Capture.negative">Cancel</string>
+    <string name="Home_Page.Dialog.Capture.title">Please enter the Equipment IC</string>
+    <string name="Home_Page.user_id_prefix">User IC:</string>
+    <string name="Home_Page.user_role_prefix">User authorization:</string>
     <string name="Home_Page.Rental">Rental</string>
     <string name="Home_Page.Return">Return</string>
     <string name="Home_Page.Sales">Sales</string>
@@ -26,6 +34,7 @@
     <string name="Home_Page.EquipmentHistory">Equipment History</string>
 
     <!-- Capture Image Strings -->
+    <string name="Capture_Screen.Title">Capture Image</string>
     <string name="Capture_Screen.GPS.loading">Loading GPS&#8230;</string>
     <string name="Capture_Screen.success">Report successfully Generated;</string>
     <string name="Capture_Screen.fail">Report has an error;</string>

@@ -8,20 +8,26 @@
               android:orientation="vertical"
               android:background="@drawable/background">
 
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/HertzLogo"
-            android:orientation="vertical"
-            />
-    <EditText
-            android:layout_width="match_parent"
+    <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/IC_num"
-            android:hint="IC#"
+            android:id="@+id/home_page_user_id_textView"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="22sp"
+            android:text="@string/app_name"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_page_user_authorization_textView"
+            android:layout_gravity="center"
+            android:textSize="18sp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/app_name"/>
+
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +35,7 @@
             android:id="@+id/Rental"
             android:text="@string/Home_Page.Rental"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"/>
     <Button
             android:layout_width="match_parent"
@@ -37,6 +44,7 @@
             android:id="@+id/Return"
             android:text="@string/Home_Page.Return"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"/>
     <Button
             android:layout_width="match_parent"
@@ -45,6 +53,7 @@
             android:id="@+id/Sales"
             android:text="@string/Home_Page.Sales"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"/>
     <Button
             android:layout_width="match_parent"
@@ -53,6 +62,7 @@
             android:id="@+id/FieldService"
             android:text="@string/Home_Page.FieldService"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"/>
     <Button
             android:layout_width="match_parent"
@@ -61,6 +71,7 @@
             android:id="@+id/EquipmentHistory"
             android:text="@string/Home_Page.EquipmentHistory"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"/>
 </LinearLayout>
 

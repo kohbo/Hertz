@@ -1,19 +1,25 @@
 package com.hackathon.team6.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.ActivityWithLoading;
 import com.hackathon.team6.dataBase.DataBase;
+import com.hackathon.team6.dataBase.dataType.User;
+import com.hackathon.team6.dataBase.queryTasks.VerifyCredentialsWorker;
+import com.hackathon.team6.utlities.UnactiveLoad;
 import com.hackathon.team6.utlities.Utilities;
 
 /**
  * Created by Colin on 1/24/2015.
  */
-public class Login_Page extends Activity {
+public class Login_Page extends ActivityWithLoading {
 
     Button mLoginButton;
     EditText mUserField;
@@ -64,13 +70,26 @@ public class Login_Page extends Activity {
             return;
         }
 
-        if(!DataBase.validateUser(userIdNumber,password)){
-            Utilities.showToast(this,R.string.Error_invalid_id_password);
-            return;
-        }
+        ProgressDialog mDialog = startLoad();
+        VerifyCredentialsWorker task = new VerifyCredentialsWorker(this,mDialog,userIdNumber,password);
+        tasks.add(task);
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
-        Intent intent = new Intent(this,Login_Page.class);
+    }
+
+    @Override
+    public void onFinishLoad() {
+        Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
+    }
 
+    @Override
+    public void onLoadFailed() {
+        Utilities.showToast(this,R.string.Error_invalid_id_password);
+    }
+
+    @Override
+    public void onTimeOut() {
+        Utilities.showToast(this,R.string.Error_timeout);
     }
 }

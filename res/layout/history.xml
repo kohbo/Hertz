@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:orientation="vertical">
 
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/HertzLogo"
-            android:orientation="vertical"
-            />
-    <TextView
-            android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/history_IC_NUM"
-            />
+            android:layout_width="match_parent">
 
-    <TableLayout android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/history_dynamicTable"
-                 android:stretchColumns="0,1,2,3"
-            >
-        <TableRow
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent" android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/HertzLogo"
+                android:orientation="vertical"
+                />
+        <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/history_IC_NUM"
+                />
 
+        <TableLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/history_dynamicTable"
+                     android:stretchColumns="0,1,2,3"
                 >
-            <TextView
-                    android:text="Type"
-                    android:layout_width="wrap_content"
-                    />
-            <TextView
+            <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                    android:text="Date"
+                    >
+                <TextView
+                        android:text="Type"
+                        android:layout_width="wrap_content"
+                        />
+                <TextView
 
-                    android:layout_width="wrap_content"/>
-            <TextView
-                    android:text="# of images"
+                        android:text="Date"
 
-                    android:layout_width="wrap_content"/>
-            <Button
-                    android:text="View"
-                    android:visibility="invisible"
-                    />
-        </TableRow>
+                        android:layout_width="wrap_content"/>
+                <TextView
+                        android:text="# of images"
 
-    </TableLayout>
+                        android:layout_width="wrap_content"/>
+                <Button
+                        android:text="View"
+                        android:visibility="invisible"
+                        />
+            </TableRow>
 
-</LinearLayout>
+        </TableLayout>
+
+    </LinearLayout>
+</ScrollView>

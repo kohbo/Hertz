@@ -1,10 +1,5 @@
 package com.hackathon.team6.dataBase.dataType;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-
 public class Transaction {
 
     private int assessment_id;
@@ -42,6 +37,11 @@ public class Transaction {
     private String image10;
     private String image11;
     private String image12;
+
+
+    /*
+    * Getter's and Setter's
+    */
 
     public int getId() {
         return assessment_id;
