@@ -5,4 +5,8 @@ package com.hackathon.team6.dataBase;
  */
 public class Insert {
 
+    public Insert() {
+
+    }
+
 }

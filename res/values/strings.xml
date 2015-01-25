@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Home page -->
     <string name="app_name">Quick Assess</string>
 
     <!-- Error Strings -->
