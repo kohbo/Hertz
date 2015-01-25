@@ -21,7 +21,7 @@ public class JsonParser {
     private JsonParser() {
     }
 
-    int i;
+
     public static User parseUser(String s) {
 
         return new User(2);
