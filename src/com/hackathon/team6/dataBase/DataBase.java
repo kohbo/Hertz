@@ -19,6 +19,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by William on 1/24/2015.
@@ -102,9 +103,9 @@ public class DataBase   {
      * @param id
      * @return
      */
-    public  Equipment queryEquipment(int id) {
+    public List<Transaction> queryEquipment(int id) {
         String command = url+"get_ic_assessments.php?ic="+id;
-        Equipment equipment = null;
+        List<Transaction> equipment = null;
         try {
             equipment = JsonParser.parseEquipment(request(command));
         } catch (JsonParseException e) {
@@ -132,6 +133,7 @@ public class DataBase   {
         } catch (JsonMappingException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
