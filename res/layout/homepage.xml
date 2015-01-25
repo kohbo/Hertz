@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/Rental"
-            android:text="@string/Rental"
+            android:text="@string/Home_Page.Rental"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
     <Button
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/Return"
-            android:text="@string/Return"
+            android:text="@string/Home_Page.Return"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
     <Button
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/Sales"
-            android:text="@string/Sales"
+            android:text="@string/Home_Page.Sales"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
     <Button
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/FieldService"
-            android:text="@string/FieldService"
+            android:text="@string/Home_Page.FieldService"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
     <Button
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/EquipmentHistory"
-            android:text="@string/EquipmentHistory"
+            android:text="@string/Home_Page.EquipmentHistory"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
 </LinearLayout>
