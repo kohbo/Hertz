@@ -1,23 +1,18 @@
 package com.hackathon.team6.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.hackathon.team6.R;
-import com.hackathon.team6.dataBase.dataType.Image;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
 import com.hackathon.team6.utlities.adapters.GridViewAdapter;
 import com.hackathon.team6.utlities.gps.GPSActivity;
-import com.hackathon.team6.utlities.image.Image_Activity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.io.File;
-import java.util.ArrayList;
 
 /**
  * Created by brian on 1/24/2015.
@@ -71,7 +66,9 @@ public class Image_Capture extends GPSActivity {
             mRental.setText(transaction.getCurrentType().name);
         }
 
-        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction));
+
+        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction,true,this));
+
         mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -97,14 +94,16 @@ public class Image_Capture extends GPSActivity {
         Utilities.showToast(this, message);
     }
 
-    private void updateCount(){
-//        mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
+    public void updateCount(){
+        String line1 = transaction.getImages().size() + "/" + Transaction.MAX_PICTURES + " " +
+                getResources().getString(R.string.Capture_Screen_image_count_postfix);
+        String line2 = transaction.getMinImages() + " min for " + transaction.getCurrentType().name;
+        mImagesCaptured.setText(line1 + "\n" + line2);
     }
 
     protected void submitReport(){
         Utilities.showToast(this, R.string.Capture_Screen_success);
-        Intent intent = new Intent(this,Home_Page.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override

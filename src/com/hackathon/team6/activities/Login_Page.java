@@ -11,6 +11,7 @@ import com.hackathon.team6.R;
 import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
 import com.hackathon.team6.dataBase.queryTasks.VerifyCredentialsWorker;
 import com.hackathon.team6.utlities.Utilities;
+import com.hackathon.team6.utlities.image.PictureFileManager;
 
 /**
  * Created by Colin on 1/24/2015.
@@ -87,5 +88,11 @@ public class Login_Page extends ActivityWithLoading {
     @Override
     public void onTimeOut() {
         Utilities.showToast(this,R.string.Error_timeout);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PictureFileManager.clearAppDir();
     }
 }
