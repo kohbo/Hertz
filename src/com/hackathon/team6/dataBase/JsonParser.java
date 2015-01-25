@@ -44,4 +44,41 @@ public class JsonParser {
         JsonParser.parseEquipment("{\"status\":0,\"data\":{\"assessment_id\":\"1\",\"ic\":\"000000001\",\"customer_id\":\"1\",\"created_by\":\"1\",\"image1\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200203.jpg\",\"image2\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200208.jpg\",\"image3\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200212.jpg\",\"image4\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200216.jpg\",\"image5\":null,\"image6\":null,\"image7\":null,\"image8\":null,\"image9\":null,\"image10\":null,\"image11\":null,\"image12\":null,\"type\":\"1\",\"loc_lat\":null,\"loc_long\":null,\"created_on\":\"2015-01-24 21:52:58\"}}");
 
     }
+
+    public static User PUser(String s, int id, String pass) {
+
+        char[] c = s.toCharArray();
+        String name = "";
+        int role;
+
+        if (c[10] != 0) {
+            int count = 29;
+
+            while (c[count] != '"') {
+                name = name + c[count];
+                count++;
+            }
+            role = Integer.parseInt(String.valueOf(c[count + 10]));
+
+        } else {
+            return null;
+        }
+        User user = new User(id);
+        user.setPassword(pass);
+        user.setName(name);
+        switch (role) {
+            case 1:
+                user.setCurrentRole(User.role.Retail);
+                break;
+
+            case 2:
+                user.setCurrentRole(User.role.Sales);
+                break;
+
+            case 3:
+                user.setCurrentRole(User.role.Service);
+                break;
+        }
+        return user;
+    }
 }
