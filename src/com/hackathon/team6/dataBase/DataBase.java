@@ -39,6 +39,16 @@ public class DataBase   {
     new_assessment.php (Must be POST method request)
     employee_id, customer_id, ic, type, images
 */
+
+    private static DataBase ourInstance = new DataBase();
+
+    public static DataBase getInstance() {
+        return ourInstance;
+    }
+
+    private DataBase() {
+
+    }
     private static final String url = "http://Kohding.net/hertz/";
 
     private static String request(String command){
@@ -59,7 +69,7 @@ public class DataBase   {
             }
             is.close();
             buffer.append(str.toString());
-            // Done!
+
         }
         catch(Throwable t) {
             t.printStackTrace();
@@ -83,7 +93,9 @@ public class DataBase   {
      */
     public static User validateUser(int id, String password) {
         String command = url+"/login.php?employee_id="+id+"&pass="+password;
-        return JsonParser.parseUser(request(command));
+        return JsonParser.PUser(request(command), id, password);
+
+        // return JsonParser.parseUser(request(command));
     }
 
     /**
