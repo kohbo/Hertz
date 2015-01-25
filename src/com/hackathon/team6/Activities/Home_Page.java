@@ -63,7 +63,7 @@ public class Home_Page extends ActivityWithLoading {
         mUserRole = (TextView) findViewById(R.id.home_page_user_authorization_textView);
 
         if(user != null) {
-            mUserName.setText(user.getName());
+            mUserName.setText(user.getData().getName());
             String filler = "";
             String id = Integer.toString(user.getId());
             for(int i = 0; i < 5-id.length(); i++){
@@ -71,7 +71,7 @@ public class Home_Page extends ActivityWithLoading {
             }
             String fullId = filler + id;
             mUserIC.setText(getResources().getString(R.string.Home_Page_user_id_prefix) + " " + fullId);
-            mUserRole.setText(getResources().getString(R.string.Home_Page_user_role_prefix) + " " + user.getCurrentRole().toString());
+            mUserRole.setText(getResources().getString(R.string.Home_Page_user_role_prefix) + " " + user.getMyRole().toString());
         }
 
         mRentalButton.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +105,7 @@ public class Home_Page extends ActivityWithLoading {
             }
         });
 
-        disableButtonsByRole(user.getCurrentRole());
+        disableButtonsByRole(user.getMyRole());
     }
     /*
     Generates report of type
@@ -168,7 +168,7 @@ public class Home_Page extends ActivityWithLoading {
 
     protected void disableButtonsByRole(User.role role){
         switch (role){
-            case Retail:
+            case Rental:
                 //mSalesButton.setVisibility(View.GONE);
                 //mFieldService.setVisibility(View.GONE);
                 break;
