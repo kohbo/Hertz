@@ -11,7 +11,9 @@
             />
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/history_IC_NUM"
+            />
 
 
     <TableRow
@@ -38,11 +40,11 @@
     </TableRow>
 
 
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/history_list_view"
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/history_dynamicTable"
+            >
 
-            />
+    </TableLayout>
 
 </LinearLayout>
