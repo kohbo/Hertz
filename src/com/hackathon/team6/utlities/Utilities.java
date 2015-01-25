@@ -1,4 +1,4 @@
-package com.hackathon.team6.utils;
+package com.hackathon.team6.utlities;
 
 
 import android.content.Context;

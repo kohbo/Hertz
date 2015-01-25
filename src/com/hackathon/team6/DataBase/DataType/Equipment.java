@@ -12,11 +12,10 @@ public class Equipment {
     private String Location;  //ToDO determine Data Type
 
 
-    Equipment(int id) {
+    public Equipment(int id) {
         this.id = id;
         //TODO Get Data From DataBase
     }
-
 
     /*
     * Getter's and Setter's
