@@ -115,8 +115,7 @@ public class DataBase   {
      */
     public Transaction queryTransaction(int id) {
         String command = url+"get_assessment_info.php?assessment_id="+id;
-        //return JsonParser.parseTransaction(request(command));
-        return null;
+        return JsonParser.parseTransaction(request(command));
     }
 
 
