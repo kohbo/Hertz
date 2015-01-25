@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.hackathon.team6.R;
+import com.hackathon.team6.activities.Image_Capture;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.image.BitmapManager;
 import com.hackathon.team6.utlities.image.PictureFileManager;
@@ -24,20 +25,16 @@ public class GridViewAdapter extends BaseAdapter {
     Transaction transaction;
     Context context;
     LayoutInflater inflater;
+    boolean deleteButtons;
+    Image_Capture parent;
 
-    public GridViewAdapter(Context context, Transaction transaction) {
+    public GridViewAdapter(Context context, Transaction transaction, boolean deleteButtons, Image_Capture parent) {
         super();
         this.context = context;
         this.transaction = transaction;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         tasks = new ArrayList<AsyncTask>();
-    }
-
-    public void stopAllTasks(){
-        for(AsyncTask asyncTask : tasks){
-            asyncTask.cancel(true);
-        }
-        tasks.clear();
+        this.deleteButtons = deleteButtons;
     }
 
     @Override
@@ -60,7 +57,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View newView = null;
+        View newView;
 
         if(i == 0){
             newView = inflater.inflate(R.layout.gridview_add_item,viewGroup,false);
@@ -75,13 +72,19 @@ public class GridViewAdapter extends BaseAdapter {
 
             Button b = (Button) newView.findViewById(R.id.gridView_item_button);
 
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    transaction.getImages().remove(position);
-                    notifyDataSetChanged();
-                }
-            });
+            if(!deleteButtons){
+                b.setVisibility(View.GONE);
+            }
+            else {
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        transaction.getImages().remove(position);
+                        parent.updateCount();
+                        notifyDataSetChanged();
+                    }
+                });
+            }
 
             if(transaction.getImages().get(position).getUri() != null){
                 tasks.add(BitmapManager.setImageView(iv, context, transaction.getImages().get(position).getUri(), 120, 120));

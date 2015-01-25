@@ -27,7 +27,7 @@ public class Timeout implements Runnable{
 
             if(dialog != null && activity != null) {
                 dialog.dismiss();
-                activity.timeOut();
+                activity.onTimeOut();
             }
         }
         catch (Exception e){

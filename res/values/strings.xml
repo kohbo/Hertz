@@ -6,7 +6,7 @@
     <!-- Error Strings -->
     <string name="Error.no_connection">No Internet Connection Found</string>
     <string name="Error.empty_username">Please enter a user Id</string>
-    <string name="Error.empty_password">Password</string>
+    <string name="Error.empty_password">Please enter a password</string>
     <string name="Error.invalid_id_format">Invalid Id Format</string>
     <string name="Error.invalid_id_password">Invalid Id Password Combination</string>
     <string name="Error.GPS">GPS Disabled</string>

@@ -5,13 +5,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.*;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by brian on 1/24/2015.
  */
 public class History_Activity extends Activity {
+
+    public static List<Transaction> transactions;
 
     TableLayout mHistoryTable;
     TextView mEIC_Number;
@@ -26,8 +30,8 @@ public class History_Activity extends Activity {
         mHistoryTable = (TableLayout)findViewById(R.id.history_dynamicTable);
         mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
         mEIC_Number.setText("IC# 999-99-9999");
-        ArrayList<String> myList = new ArrayList<String>();
 
+        
         createRow("Rental", "12/29/14", "4");
         createRow("Return", "12/29/14", "9");
         createRow("Sales Only", "1/29/13", "12");

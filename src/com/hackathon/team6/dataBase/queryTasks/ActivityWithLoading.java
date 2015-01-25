@@ -61,15 +61,25 @@ public abstract class ActivityWithLoading extends Activity {
         handler.postDelayed(runnable, time);
     }
 
-    protected void timeOut(){
+    protected void removeTimer(){
         if(handler != null && runnable != null){
+            Log.d("DEBUG", "Callback Removed");
             handler.removeCallbacks(runnable);
         }
-        onTimeOut();
     }
 
-    public abstract void onFinishLoad();
-    public abstract void onLoadFailed();
-    public abstract void onTimeOut();
+    public void finishLoad(){
+        removeTimer();
+        onFinishLoad();
+    }
+
+    public void failLoad(){
+        removeTimer();
+        onLoadFailed();
+    }
+
+    protected abstract void onFinishLoad();
+    protected abstract void onLoadFailed();
+    protected abstract void onTimeOut();
 
 }

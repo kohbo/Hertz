@@ -46,10 +46,10 @@ public class VerifyCredentialsWorker extends AsyncTask<Void, Void, Void> {
         if(home_page != null){
             if(user != null){
                 Home_Page.userPassing = user;
-                home_page.onFinishLoad();
+                home_page.finishLoad();
             }
             else {
-                home_page.onLoadFailed();
+                home_page.failLoad();
             }
         }
     }
