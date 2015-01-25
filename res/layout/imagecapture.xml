@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <GridView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></GridView>
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:orientation="vertical">
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/image_capture.image_banner"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_capture.ICNumber"
+              android:layout_below="@id/image_capture.image_banner"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_capture_rental_type"
+              android:layout_below="@id/image_capture.ICNumber"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_capture.images_captured"
+              android:layout_below="@id/image_capture_rental_type"
+            />
+    <Button android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_capture.submit_button"
+              android:layout_below="@id/image_capture.images_captured"
+            />
+    <GridView android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    </GridView>
+</RelativeLayout>

@@ -27,5 +27,7 @@
 
     <!-- Capture Image Strings -->
     <string name="Capture_Screen.GPS.loading">Loading GPS&#8230;</string>
+    <string name="Capture_Screen.success">Report successfully Generated;</string>
+    <string name="Capture_Screen.fail">Report has an error;</string>
 
 </resources>
