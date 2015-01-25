@@ -11,7 +11,7 @@ public class User {
     private String Name;
     private role currentRole;
 
-    private enum role {
+    public enum role {
         Retail,
         Sales,
         Service
@@ -19,7 +19,11 @@ public class User {
 
     public User(int id) {
         this.id = id;
+
         //TODO Get Data From DataBase
+
+        setName("Name");
+        setCurrentRole(role.Retail);
     }
 
     /*

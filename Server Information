@@ -14,3 +14,6 @@ login.php
 
 new_assessment.php (Must be POST method request)
 	employee_id, customer_id, ic, type, loc_lat, loc_long, images
+
+mail_assessment.php
+	assessment_id, email, employee_id

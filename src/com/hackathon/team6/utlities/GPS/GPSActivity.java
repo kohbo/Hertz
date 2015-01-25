@@ -1,16 +1,19 @@
-package com.hackathon.team6.utlities.GPS;
+package com.hackathon.team6.utlities.gps;
 
 import android.app.Activity;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
+import com.hackathon.team6.utlities.image.Image_Activity;
 
-public abstract class GPSActivity extends Activity {
+public abstract class GPSActivity extends Image_Activity {
 
     LocationManager mlocManager;
     LocationListener mlocListener;
@@ -32,8 +35,15 @@ public abstract class GPSActivity extends Activity {
         super.onCreate(savedInstanceState);
     }
 
-    protected void setLoading(TextView tv){
+    private void setLoading(TextView tv){
         tv.setText(getResources().getString(R.string.Capture_Screen_GPS_loading));
+    }
+
+    protected void setNewGPS(TextView tv, Transaction transaction){
+        setLoading(tv);
+        GPSWorkerTask task = new GPSWorkerTask(tv,transaction,this);
+        tasks.add(task);
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void initializeGPS(){

@@ -8,11 +8,16 @@ import java.util.ArrayList;
 public class Transaction {
     private int id;
 
-    private enum type {
-        Rental,
-        Return,
-        Sales,
-        FieldService
+    public enum type {
+        Rental ("Rental"),
+        Return ("Return"),
+        Sales ("Sales"),
+        FieldService ("Field Services");
+
+        public String name;
+        type(String name){
+            this.name = name;
+        }
     }
 
     private type currentType;
@@ -163,5 +168,7 @@ public class Transaction {
         }
     }
 
-
+    public boolean completeTransaction(){
+        return true;
+    }
 }

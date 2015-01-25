@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
 
 public class Home_Page extends Activity {
@@ -75,27 +76,31 @@ public class Home_Page extends Activity {
     protected void rentReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
+        intent.putExtra("type", Transaction.type.Rental.name);
         startActivity(intent);
     }
     protected void returnReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
+        intent.putExtra("type", Transaction.type.Return.name);
         startActivity(intent);
     }
     protected void salesReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
+        intent.putExtra("type", Transaction.type.Sales.name);
         startActivity(intent);
     }
     protected void fieldServiceReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
+        intent.putExtra("type", Transaction.type.FieldService.name);
         startActivity(intent);
     }
     protected void equipmentHistoryReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
-        Intent intent = new Intent(this,Image_Capture.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this,Image_Capture.class);
+        //startActivity(intent);
     }
 }
 

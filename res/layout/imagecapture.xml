@@ -2,7 +2,9 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:background="@drawable/background">
+
     <ImageView android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:id="@+id/image_capture.image_banner"
@@ -19,15 +21,29 @@
             />
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/image_capture.images_captured"
+              android:id="@+id/image_capture_gps"
               android:layout_below="@id/image_capture_rental_type"
             />
-    <Button android:layout_width="match_parent"
+    <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/image_capture.submit_button"
-              android:layout_below="@id/image_capture.images_captured"
+              android:id="@+id/image_capture.images_captured"
+              android:layout_below="@id/image_capture_gps"
+            />
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_capture.submit_button"
+            android:layout_alignParentBottom="true"
             />
     <GridView android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    </GridView>
+              android:layout_height="wrap_content"
+              android:layout_above="@id/image_capture.submit_button"
+              android:id="@+id/image_capture_gridView"
+              android:layout_below="@id/image_capture.images_captured"
+              android:columnWidth="120dp"
+              android:numColumns="auto_fit"
+              android:verticalSpacing="10dp"
+              android:horizontalSpacing="10dp"
+              android:stretchMode="columnWidth"
+              android:layout_margin="5dp"/>
+
 </RelativeLayout>

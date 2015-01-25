@@ -7,29 +7,29 @@ import java.util.ArrayList;
  */
 public class Equipment {
 
-    private int id;
-    private ArrayList<Transaction> transactions;
+        private int id;
+        private ArrayList<Transaction> transactions;
 
 
-    public Equipment(int id) {
-        this.id = id;
+        public Equipment(int id) {
+            this.id = id;
 
-        //TODO Get Data From DataBase
-    }
+            //TODO Get Data From DataBase
+        }
 
-    /*
-    * Getter's and Setter's
-    */
+        /*
+        * Getter's and Setter's
+        */
 
-    public int getId() {
-        return id;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public ArrayList<Transaction> getTransactions() {
-        return transactions;
-    }
+        public ArrayList<Transaction> getTransactions() {
+            return transactions;
+        }
 
-    public void setTransactions(ArrayList<Transaction> transactions) {
-        this.transactions = transactions;
-    }
+        public void setTransactions(ArrayList<Transaction> transactions) {
+            this.transactions = transactions;
+        }
 }

@@ -1,4 +1,4 @@
-package com.hackathon.team6.utlities.GPS;
+package com.hackathon.team6.utlities.gps;
 
 
 import android.content.Context;
