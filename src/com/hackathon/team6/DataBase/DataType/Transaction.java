@@ -94,6 +94,18 @@ public class Transaction{
         this.minImages = minImages;
     }
 
+    public void setLoc_lat(float loc_lat) {
+        this.loc_lat = loc_lat;
+    }
+
+    public void setLoc_long(float loc_long) {
+        this.loc_long = loc_long;
+    }
+
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+
     /*******************************************
      *
      * Utility Methods
@@ -127,7 +139,5 @@ public class Transaction{
         }
     }
 
-    public boolean completeTransaction(){
-        return true;
-    }
+
 }

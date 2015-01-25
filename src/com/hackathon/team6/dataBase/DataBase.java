@@ -102,8 +102,9 @@ public class DataBase   {
      */
     public  Equipment queryEquipment(int id) {
         String command = url+"get_ic_assessments.php?ic="+id;
-        //return JsonParser.parseEquipment(request(command));
-        return null;
+        Equipment equipment = JsonParser.parseEquipment(request(command));
+
+        return equipment;
     }
 
 
@@ -117,8 +118,6 @@ public class DataBase   {
         String command = url+"get_assessment_info.php?assessment_id="+id;
         return JsonParser.parseTransaction(request(command));
     }
-
-
 
     /**
      * Queries Image Data and Creates Image Class

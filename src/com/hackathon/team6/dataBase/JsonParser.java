@@ -29,6 +29,10 @@ public class JsonParser {
     }
 
     public static Transaction parseTransaction(String s){
+        if (s == "") {
+            return null;
+        }
+
         Transaction trans = new Transaction();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -41,6 +45,8 @@ public class JsonParser {
     }
 
     public static Equipment parseEquipment(String s){
+
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode rootNode = mapper.readTree(s);
