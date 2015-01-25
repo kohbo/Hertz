@@ -3,13 +3,11 @@ package com.hackathon.team6.activities;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.widget.*;
 import com.hackathon.team6.R;
 import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +29,11 @@ public class History_Activity extends Activity {
 
         mHistoryTable = (TableLayout)findViewById(R.id.history_dynamicTable);
         mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
-        mEIC_Number.setText(Home_Page.user.getId());
+
+        mEIC_Number.setText(String.valueOf(Home_Page.user.getUserId()));
+
+        DataBase query = DataBase.getInstance();
+        List<Transaction> transactions = query.queryEquipment(1);
         
         for(Transaction t : transactions){
             createRow(t.getCurrentType().toString(), t.getCreated_on(),String.valueOf(t.getImageListSize()));

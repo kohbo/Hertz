@@ -67,7 +67,7 @@ public class Home_Page extends ActivityWithLoading {
         if(user != null) {
             mUserName.setText(user.getData().getName());
             String filler = "";
-            String id = Integer.toString(user.getId());
+            String id = Integer.toString(user.getUserId());
             for(int i = 0; i < 5-id.length(); i++){
                 filler += "0";
             }
