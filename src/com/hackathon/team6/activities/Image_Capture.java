@@ -71,7 +71,8 @@ public class Image_Capture extends GPSActivity {
             mRental.setText(transaction.getCurrentType().name);
         }
 
-        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction));
+        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction,true,this));
+
         mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -97,14 +98,13 @@ public class Image_Capture extends GPSActivity {
         Utilities.showToast(this, message);
     }
 
-    private void updateCount(){
+    public void updateCount(){
         mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
     }
 
     protected void submitReport(){
         Utilities.showToast(this, R.string.Capture_Screen_success);
-        Intent intent = new Intent(this,Home_Page.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -1,30 +1,33 @@
-package com.hackathon.team6.utlities;
+package com.hackathon.team6.dataBase.queryTasks;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
+import com.hackathon.team6.activities.Image_Capture;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 
 import java.lang.ref.WeakReference;
 
 /**
  * Created by Colin on 1/25/2015.
  */
-public class UnactiveLoad extends AsyncTask<Void, Void, Void> {
+public class getTransactionsWorker extends AsyncTask<Void, Void, Void> {
 
     WeakReference<ProgressDialog> toDismiss;
     WeakReference<ActivityWithLoading> onFinish;
 
-    public UnactiveLoad(ActivityWithLoading home_page, ProgressDialog progressDialog) {
+    int eic;
+    Transaction transaction;
+
+    public getTransactionsWorker(ActivityWithLoading home_page, ProgressDialog progressDialog, int eic) {
         super();
         toDismiss = new WeakReference<ProgressDialog>(progressDialog);
         onFinish = new WeakReference<ActivityWithLoading>(home_page);
+        this.eic = eic;
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
-        try{
-            Thread.sleep(2000);
-        }catch (InterruptedException e) {}
+        //transaction = DataBase.validateUser(id,pass);
         return null;
     }
 
@@ -38,7 +41,8 @@ public class UnactiveLoad extends AsyncTask<Void, Void, Void> {
 
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
-            if(true){
+            if(transaction != null){
+                //Image_Capture.transactionPassing = transaction;
                 home_page.finishLoad();
             }
             else {

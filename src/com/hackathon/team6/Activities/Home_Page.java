@@ -26,6 +26,7 @@ public class Home_Page extends ActivityWithLoading {
 
     ImageView hertz_logo;
 
+    TextView mUserName;
     TextView mUserIC;
     TextView mUserRole;
     //TextView number_of_pictures_field;
@@ -53,6 +54,7 @@ public class Home_Page extends ActivityWithLoading {
         hertz_logo = (ImageView) findViewById(R.id.HertzLogo);
 
         //buttons
+        mUserName = (TextView) findViewById(R.id.home_page_user_name_textView);
         mRentalButton = (Button) findViewById(R.id.Rental);
         mReturnButton = (Button) findViewById(R.id.Return);
         mSalesButton = (Button) findViewById(R.id.Sales);
@@ -65,7 +67,14 @@ public class Home_Page extends ActivityWithLoading {
         userPassing = null;
 
         if(user != null) {
-            mUserIC.setText(getResources().getString(R.string.Home_Page_user_id_prefix) + " " + user.getId());
+            mUserName.setText(user.getName());
+            String filler = "";
+            String id = Integer.toString(user.getId());
+            for(int i = 0; i < 5-id.length(); i++){
+                filler += "0";
+            }
+            String fullId = filler + id;
+            mUserIC.setText(getResources().getString(R.string.Home_Page_user_id_prefix) + " " + fullId);
             mUserRole.setText(getResources().getString(R.string.Home_Page_user_role_prefix) + " " + user.getCurrentRole().toString());
         }
 
