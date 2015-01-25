@@ -30,7 +30,9 @@ public abstract class Image_Activity extends Activity {
 
     @Override
     protected void onStop() {
-        stopAllTasks();
+        if(tasks != null){
+            stopAllTasks();
+        }
         super.onStop();
     }
 

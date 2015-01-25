@@ -1,5 +1,6 @@
 package com.hackathon.team6.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -37,6 +38,12 @@ public class Image_Capture extends GPSActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagecapture);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.Capture_Screen_Title);
+        }
+
         mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
         //TODO

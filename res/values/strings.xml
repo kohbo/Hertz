@@ -21,6 +21,7 @@
     <string name="Login_Page.logo_description">Hertz Logo</string>
 
     <!-- Home Page Strings -->
+    <string name="Home_Page.Title">Home Screen</string>
     <string name="Home_Page.Dialog.Capture.positive">Go</string>
     <string name="Home_Page.Dialog.Capture.negative">Cancel</string>
     <string name="Home_Page.Dialog.Capture.title">Please enter the Equipment IC</string>
@@ -33,6 +34,7 @@
     <string name="Home_Page.EquipmentHistory">Equipment History</string>
 
     <!-- Capture Image Strings -->
+    <string name="Capture_Screen.Title">Capture Image</string>
     <string name="Capture_Screen.GPS.loading">Loading GPS&#8230;</string>
     <string name="Capture_Screen.success">Report successfully Generated;</string>
     <string name="Capture_Screen.fail">Report has an error;</string>

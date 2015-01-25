@@ -1,5 +1,6 @@
 package com.hackathon.team6.activities;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -46,6 +47,12 @@ public class Home_Page extends ActivityWithLoading {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.Home_Page_Title);
+        }
+
         hertz_logo = (ImageView) findViewById(R.id.HertzLogo);
 
         //buttons
