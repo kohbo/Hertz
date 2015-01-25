@@ -20,6 +20,7 @@ public abstract class ActivityWithLoading extends Activity {
     public static int REQUEST_CODE_LIST = 2;
     public static int REQUEST_CODE_USER = 3;
     public static final int TIMEOUT = 5000;
+    public static boolean DEBUG = true;
 
     protected List<AsyncTask> tasks;
     private Handler handler;
@@ -56,9 +57,11 @@ public abstract class ActivityWithLoading extends Activity {
     }
 
     public void setTimeout(long time, final Dialog d){
-        handler = new Handler();
-        runnable = new Timeout(this, d);
-        handler.postDelayed(runnable, time);
+        if(!DEBUG){
+            handler = new Handler();
+            runnable = new Timeout(this, d);
+            handler.postDelayed(runnable, time);
+        }
     }
 
     protected void removeTimer(){

@@ -33,8 +33,8 @@ public class History_Activity extends Activity {
         mEIC_Number.setText(String.valueOf(Home_Page.user.getUserId()));
         
         for(Transaction t : transactions){
-            createRow(t.getCurrentType().toString(), t.getCreated_on(),String.valueOf(t.getImageListSize()));
-    }
+            createRow(t.getCurrentType().toString(), "1/25/2015", "5");
+        }
     }
     public void createRow(String type, String date, String imageNumber){
         TableRow myNewRow= new TableRow(this);
