@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hackathon.team6.dataBase.dataType.Equipment;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.dataBase.dataType.User;
-import com.hackathon.team6.dataBase.dataType.UserTwo;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -31,10 +30,10 @@ public class JsonParser {
     }
 
 
-    public static UserTwo parseUser(String s)throws JsonParseException, JsonMappingException {
+    public static User parseUser(String s)throws JsonParseException, JsonMappingException {
 
         ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
-        UserTwo myUser;
+        User myUser;
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                 false);
 
@@ -42,7 +41,7 @@ public class JsonParser {
                 JsonAutoDetect.Visibility.ANY);
 
         try {
-            myUser = mapper.treeToValue(mapper.readTree(s), com.hackathon.team6.dataBase.dataType.UserTwo.class);
+            myUser = mapper.treeToValue(mapper.readTree(s), com.hackathon.team6.dataBase.dataType.User.class);
 
             return myUser;
         } catch (IOException e) {
@@ -96,43 +95,43 @@ public class JsonParser {
     }
 
 
-    public static User PUser(String s, int id, String pass) {
-        if (s == "") {
-            s = "{\"status\":0,\"data\":{\"name\":\"Ju nendez\",\"role\":\"1\"}}";
-            id=3;
-        }
-        char[] c = s.toCharArray();
-        String name = "";
-        int role;
-
-        if (c[10] != 0) {
-            int count = 29;
-
-            while (c[count] != '"') {
-                name = name + c[count];
-                count++;
-            }
-            role = Integer.parseInt(String.valueOf(c[count + 10]));
-
-        } else {
-            return null;
-        }
-        User user = new User(id);
-        user.setPassword(pass);
-        user.setName(name);
-        switch (role) {
-            case 1:
-                user.setCurrentRole(User.role.Retail);
-                break;
-
-            case 2:
-                user.setCurrentRole(User.role.Sales);
-                break;
-
-            case 3:
-                user.setCurrentRole(User.role.Service);
-                break;
-        }
-        return user;
-    }
+//    public static User PUser(String s, int id, String pass) {
+//        if (s == "") {
+//            s = "{\"status\":0,\"data\":{\"name\":\"Ju nendez\",\"role\":\"1\"}}";
+//            id=3;
+//        }
+//        char[] c = s.toCharArray();
+//        String name = "";
+//        int role;
+//
+//        if (c[10] != 0) {
+//            int count = 29;
+//
+//            while (c[count] != '"') {
+//                name = name + c[count];
+//                count++;
+//            }
+//            role = Integer.parseInt(String.valueOf(c[count + 10]));
+//
+//        } else {
+//            return null;
+//        }
+//        User user = new User(id);
+//        user.setPassword(pass);
+//        user.setName(name);
+//        switch (role) {
+//            case 1:
+//                user.setCurrentRole(User.role.Retail);
+//                break;
+//
+//            case 2:
+//                user.setCurrentRole(User.role.Sales);
+//                break;
+//
+//            case 3:
+//                user.setCurrentRole(User.role.Service);
+//                break;
+//        }
+//        return user;
+//    }
 }
