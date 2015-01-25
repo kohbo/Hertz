@@ -168,7 +168,8 @@ public class Home_Page extends ActivityWithLoading {
     }
 
     protected void goToHistory(){
-        Utilities.showToast(this,"Not yet implemented");
+        Intent intent = new Intent(this, History_Activity.class);
+        startActivity(intent);
     }
 
     protected void disableButtonsByRole(User.role role){
