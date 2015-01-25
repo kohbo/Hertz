@@ -31,13 +31,10 @@ public class History_Activity extends Activity {
         mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
 
         mEIC_Number.setText(String.valueOf(Home_Page.user.getUserId()));
-
-        DataBase query = DataBase.getInstance();
-        List<Transaction> transactions = query.queryEquipment(1);
         
         for(Transaction t : transactions){
             createRow(t.getCurrentType().toString(), t.getCreated_on(),String.valueOf(t.getImageListSize()));
-        }
+    }
     }
     public void createRow(String type, String date, String imageNumber){
         TableRow myNewRow= new TableRow(this);
