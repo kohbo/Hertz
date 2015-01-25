@@ -43,14 +43,6 @@ public class Image_Capture extends GPSActivity {
 
         mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
-        //TODO
-        transaction = new Transaction(0);
-        transaction.setImages(new ArrayList<Image>());
-        transaction.setCurrentType(Transaction.type.Rental);
-        mIC_Number.setText("999-99-9999");
-        //TODO
-
-
 
         mSubmit = (Button)findViewById(R.id.image_capture_submit_button);
         mRental = (TextView) findViewById(R.id.image_capture_rental_type);

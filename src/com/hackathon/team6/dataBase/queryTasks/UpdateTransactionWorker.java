@@ -41,8 +41,8 @@ public class UpdateTransactionWorker extends AsyncTask<Void, Void, Void> {
 
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
+            Image_Capture.transactionPassing = transaction;
             if(transaction != null){
-                Image_Capture.transactionPassing = transaction;
                 home_page.finishLoad(0);
             }
             else {

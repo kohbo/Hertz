@@ -43,8 +43,8 @@ public class getTransactionsListWorker extends AsyncTask<Void, Void, Void> {
 
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
+            History_Activity.transactions = transactions;
             if(transactions != null){
-                History_Activity.transactions = transactions;
                 home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_LIST);
             }
             else {

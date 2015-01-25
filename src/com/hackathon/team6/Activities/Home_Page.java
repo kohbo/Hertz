@@ -125,10 +125,16 @@ public class Home_Page extends ActivityWithLoading {
     @Override
     public void onFinishLoad(int result) {
         if(result == REQUEST_CODE_TRANSACTION){
-            goToCapture();
+            if(Image_Capture.transactionPassing != null){
+                goToCapture();
+            }
+            else Utilities.showToast(getApplication(),R.string.Error_EIC_not_found);
         }
         else if(result == REQUEST_CODE_LIST){
-            goToHistory();
+            if(Image_Capture.transactionPassing != null){
+                goToHistory();
+            }
+            else Utilities.showToast(getApplication(),R.string.Error_EIC_not_found);
         }
     }
 
