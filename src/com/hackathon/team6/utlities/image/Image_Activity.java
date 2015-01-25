@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Capture_Image_Activity extends GPSActivity {
+public abstract class Image_Activity extends GPSActivity {
     static private Uri outputFileUri;
 
     protected ArrayList<AsyncTask> tasks;
@@ -62,32 +62,9 @@ public abstract class Capture_Image_Activity extends GPSActivity {
     public void openImageIntent() {
         setupOutputFileUri();
 
-        // Camera.
-        final List<Intent> cameraIntents = new ArrayList<Intent>();
-        final Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        final PackageManager packageManager = getPackageManager();
-        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
-        for(ResolveInfo res : listCam) {
-            final String packageName = res.activityInfo.packageName;
-            final Intent intent = new Intent(captureIntent);
-            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(packageName);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-            cameraIntents.add(intent);
-        }
-
-        // Filesystem.
-        final Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-
-        // Chooser of filesystem options.
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
-
-        // Add the camera options.
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
-
-        startActivityForResult(chooserIntent, PICTURE_URI_REQUEST);
+        Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+        startActivityForResult(captureIntent, PICTURE_URI_REQUEST);
     }
 
     protected void setImageViewPicture(Uri uri, ImageView iv){
