@@ -2,11 +2,8 @@ package com.hackathon.team6.dataBase.queryTasks;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import com.hackathon.team6.activities.Home_Page;
 import com.hackathon.team6.activities.Image_Capture;
-import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.Transaction;
-import com.hackathon.team6.dataBase.dataType.User;
 
 import java.lang.ref.WeakReference;
 
