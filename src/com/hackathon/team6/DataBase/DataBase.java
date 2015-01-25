@@ -1,9 +1,9 @@
 package com.hackathon.team6.dataBase;
 
-import com.hackathon.team6.DataBase.DataType.Equipment;
-import com.hackathon.team6.DataBase.DataType.Image;
-import com.hackathon.team6.DataBase.DataType.Transaction;
-import com.hackathon.team6.DataBase.DataType.User;
+import com.hackathon.team6.dataBase.dataType.Equipment;
+import com.hackathon.team6.dataBase.dataType.Image;
+import com.hackathon.team6.dataBase.dataType.Transaction;
+import com.hackathon.team6.dataBase.dataType.User;
 
 /**
  * Created by William on 1/24/2015.
@@ -11,7 +11,7 @@ import com.hackathon.team6.DataBase.DataType.User;
 public class DataBase {
 
     public DataBase() {
-        init();
+
     }
 
     private void init() {
@@ -31,7 +31,7 @@ public class DataBase {
      * @param user
      * @return T/F if Successful
      */
-    public boolean updateUser(User user) {
+    public static boolean updateUser(User user) {
         //TODO Update ALL User Data
         return true;
     }
@@ -42,7 +42,7 @@ public class DataBase {
      * @param equipment
      * @return T/F if Successful
      */
-    public boolean updateEquipment(Equipment equipment) {
+    public static boolean updateEquipment(Equipment equipment) {
         //TODO Update ALL Equipment Data
         return true;
     }
@@ -53,7 +53,7 @@ public class DataBase {
      * @param image
      * @return T/F if Successful
      */
-    public boolean updateImage(Image image) {
+    public static boolean updateImage(Image image) {
         //TODO Update ALL Image Data
         return true;
     }
@@ -64,7 +64,7 @@ public class DataBase {
      * @param transaction
      * @return T/F if Successful
      */
-    public boolean updateTransaction(Transaction transaction) {
+    public static boolean updateTransaction(Transaction transaction) {
         //TODO Update ALL Transaction Data
         return true;
     }
@@ -82,7 +82,7 @@ public class DataBase {
      * @param password User Password
      * @return Valid Id/Password Combination
      */
-    public boolean validateUser(int id, String password) {
+    public static boolean validateUser(int id, String password) {
         boolean result = true;
         //TODO Check For valid User
         if (result) {
@@ -92,19 +92,6 @@ public class DataBase {
         }
     }
 
-    /**
-     * Queries User Data and Creates User Class
-     *
-     * @param id
-     * @return
-     */
-    public User queryUser(int id) {
-
-        User user = new User(id);
-
-
-        return user;
-    }
 
     /**
      * Queries User Data and Creates User Class
@@ -113,12 +100,48 @@ public class DataBase {
      * @return
      */
     public User queryUser(int id) {
-
         User user = new User(id);
-
-
         return user;
     }
+
+    /**
+     * Queries Transaction Data and Creates Transaction Class
+     *
+     * @param id
+     * @return
+     */
+    public Transaction queryTransaction(int id) {
+
+        Transaction transaction = new Transaction(id);
+
+
+        return transaction;
+    }
+
+    /**
+     * Queries  Equipment Data and Creates Equipment Class
+     *
+     * @param id
+     * @return
+     */
+    public  Equipment queryEquipment(int id) {
+        Equipment  equipment = new Equipment(id);
+        return equipment;
+    }
+
+
+    /**
+     * Queries Image Data and Creates Image Class
+     *
+     * @param id
+     * @return
+     */
+        public Image queryImage(int id) {
+
+        Image image = new Image(id);
+        return image;
+    }
+    
 
 
 }
