@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:orientation="vertical">
-
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/image_list_view"
-
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/image_view.image_banner"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_view.ICNumber"
+              android:layout_below="@id/image_view.image_banner"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_view.beforeRental"
+              android:layout_below="@id/image_view.ICNumber"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_view.imagesCaptured"
+              android:layout_below="@id/image_view.beforeRental"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_view.date"
+              android:layout_below="@id/image_view.imagesCaptured"
+            />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/image_view.location"
+              android:layout_below="@id/image_view.date"
             />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -21,9 +21,13 @@
             >
         <TextView
             android:text="Type"
+            android:layout_marginRight="35dp"
             android:layout_gravity="right"
-            android:layout_width="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+                />
         <TextView
+                android:layout_marginRight="35dp"
                 android:text="Date"
                 android:layout_gravity="right"
                 android:layout_width="wrap_content"/>
