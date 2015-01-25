@@ -13,7 +13,6 @@ import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
 import com.hackathon.team6.utlities.adapters.GridViewAdapter;
 import com.hackathon.team6.utlities.gps.GPSActivity;
-import com.hackathon.team6.utlities.image.Image_Activity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.io.File;
@@ -47,10 +46,10 @@ public class Image_Capture extends GPSActivity {
         mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
         //TODO
-//        transaction = new Transaction(0);
-//        transaction.setImages(new ArrayList<Image>());
-//        transaction.setCurrentType(Transaction.type.Rental);
-//        mIC_Number.setText("999-99-9999");
+        transaction = new Transaction(0);
+        transaction.setImages(new ArrayList<Image>());
+        transaction.setCurrentType(Transaction.type.Rental);
+        mIC_Number.setText("999-99-9999");
         //TODO
 
 
@@ -61,9 +60,9 @@ public class Image_Capture extends GPSActivity {
         mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
         mGPS = (TextView)findViewById(R.id.image_capture_gps);
 
-//        if(transaction.getLongLocation() == 0) {
-//            setNewGPS(mGPS, transaction);
-//        }
+        if(transaction.getLoc_lat() == 0) {
+            setNewGPS(mGPS, transaction);
+        }
 
         updateCount();
 
@@ -98,7 +97,7 @@ public class Image_Capture extends GPSActivity {
     }
 
     private void updateCount(){
-//        mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
+        mImagesCaptured.setText(transaction.getImageListSize() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
     }
 
     protected void submitReport(){
@@ -109,7 +108,7 @@ public class Image_Capture extends GPSActivity {
 
     @Override
     protected void saveImage(Uri uri) {
-//        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
         updateCount();
     }
 
