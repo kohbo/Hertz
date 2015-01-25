@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.hackathon.team6.R;
-import com.hackathon.team6.utils.Utilities;
+import com.hackathon.team6.utlities.Utilities;
 
 /**
  * Created by Colin on 1/24/2015.

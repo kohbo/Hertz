@@ -7,14 +7,14 @@ public class Image {
 
 
     private int id;
-    private String Path;
+    private String path;
     private String timeStamp;
     private String GPSCords;
 
     /**
      * @param id
      */
-    Image(int id) {
+    public Image(int id) {
         this.id = id;
     }
 
