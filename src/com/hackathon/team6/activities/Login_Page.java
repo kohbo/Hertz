@@ -64,7 +64,7 @@ public class Login_Page extends Activity {
             Utilities.showToast(this,R.string.Error_no_connection);
             return;
         }
-
+        
         User user = DataBase.validateUser(userIdNumber,password);
         if(user == null){
             Utilities.showToast(this,R.string.Error_invalid_id_password);
