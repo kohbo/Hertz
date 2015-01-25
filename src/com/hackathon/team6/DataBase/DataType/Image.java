@@ -6,10 +6,10 @@ package com.hackathon.team6.dataBase.dataType;
 public class Image {
 
 
-    private int id;
+    private int id; //timeStamp
     private String path;
-    private String timeStamp;
-    private String GPSCords;
+
+
 
     /**
      * @param id
@@ -27,19 +27,11 @@ public class Image {
         return id;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getPath() {
+        return path;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    public String getGPSCords() {
-        return GPSCords;
-    }
-
-    public void setGPSCords(String GPSCords) {
-        this.GPSCords = GPSCords;
+    public void setPath(String path) {
+        this.path = path;
     }
 }

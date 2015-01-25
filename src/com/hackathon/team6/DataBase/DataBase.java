@@ -1,9 +1,9 @@
 package com.hackathon.team6.dataBase;
 
-import com.hackathon.team6.DataBase.DataType.Equipment;
-import com.hackathon.team6.DataBase.DataType.Image;
-import com.hackathon.team6.DataBase.DataType.Transaction;
-import com.hackathon.team6.DataBase.DataType.User;
+import com.hackathon.team6.dataBase.dataType.Equipment;
+import com.hackathon.team6.dataBase.dataType.Image;
+import com.hackathon.team6.dataBase.dataType.Transaction;
+import com.hackathon.team6.dataBase.dataType.User;
 
 /**
  * Created by William on 1/24/2015.
@@ -11,7 +11,7 @@ import com.hackathon.team6.DataBase.DataType.User;
 public class DataBase {
 
     public DataBase() {
-        init();
+
     }
 
     private void init() {
@@ -92,6 +92,7 @@ public class DataBase {
         }
     }
 
+
     /**
      * Queries User Data and Creates User Class
      *
@@ -99,25 +100,47 @@ public class DataBase {
      * @return
      */
     public User queryUser(int id) {
-
         User user = new User(id);
-
-
         return user;
     }
 
     /**
-     * Queries User Data and Creates User Class
+     * Queries Transaction Data and Creates Transaction Class
      *
      * @param id
      * @return
      */
-    public User queryUser(int id) {
+    public Transaction queryTransaction(int id) {
 
-        User user = new User(id);
+        Transaction transaction = new Transaction(id);
 
 
-        return user;
+        return transaction;
+    }
+
+    /**
+     * Queries  Equipment Data and Creates Equipment Class
+     *
+     * @param id
+     * @return
+     */
+    public  Equipment queryEquipment(int id) {
+
+        Equipment  equipment = new Equipment(id);
+        return equipment;
+    }
+
+
+    /**
+     * Queries Image Data and Creates Image Class
+     *
+     * @param id
+     * @return
+     */
+        public Image queryImage(int id) {
+
+        Image image = new Image(id);
+        return image;
     }
 
 

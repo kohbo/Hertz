@@ -20,21 +20,24 @@ public class Transaction {
     private String lastModified;
 
     private User createdBy;
-    private User customer;
+    private User currentUser;
     private User lastEditedBy;
 
+    float latLocation;
+    float longLocation;
+
     private int minImages;
-    private ArrayList<Equipment> equipment;
+
 
     public Transaction(int id) {
         this.id = id;
         //TODO Get Data From DataBase
     }
 
-
     /*
     * Getter's and Setter's
     */
+
     public int getId() {
         return id;
     }
@@ -67,12 +70,12 @@ public class Transaction {
         this.createdBy = createdBy;
     }
 
-    public User getCustomer() {
-        return customer;
+    public User getCurrentUser() {
+        return currentUser;
     }
 
-    public void setCustomer(User customer) {
-        this.customer = customer;
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 
     public User getLastEditedBy() {
@@ -83,6 +86,22 @@ public class Transaction {
         this.lastEditedBy = lastEditedBy;
     }
 
+    public float getLatLocation() {
+        return latLocation;
+    }
+
+    public void setLatLocation(float latLocation) {
+        this.latLocation = latLocation;
+    }
+
+    public float getLongLocation() {
+        return longLocation;
+    }
+
+    public void setLongLocation(float longLocation) {
+        this.longLocation = longLocation;
+    }
+
     public int getMinImages() {
         return minImages;
     }
@@ -91,13 +110,11 @@ public class Transaction {
         this.minImages = minImages;
     }
 
-    public ArrayList<Equipment> getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(ArrayList<Equipment> equipment) {
-        this.equipment = equipment;
-    }
+    /*******************************************
+     *
+     * Utility Methods
+     *
+     ******************************************/
 
     /**
      * Sets Min Images based on Transaction Type
