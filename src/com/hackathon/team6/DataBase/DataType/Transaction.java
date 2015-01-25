@@ -105,7 +105,38 @@ public class Transaction{
     }
 
     public ArrayList<Image> getImages() {
+        ArrayList<Image> images = new ArrayList();
+        images.add(new Image(image1));
+        images.add(new Image(image2));
+        images.add(new Image(image3));
+        images.add(new Image(image4));
+        images.add(new Image(image5));
+        images.add(new Image(image6));
+        images.add(new Image(image7));
+        images.add(new Image(image8));
+        images.add(new Image(image9));
+        images.add(new Image(image10));
+        images.add(new Image(image11));
+        images.add(new Image(image12));
         return images;
+    }
+
+    public void setImages(ArrayList<Image> images){
+        this.images = images;
+    }
+
+    public int getImageListSize(){
+        int c = 0;
+        for(Image s : images) {
+            if(!s.getloc().equals("null")){
+                c++;
+            }
+        }
+        return c;
+    }
+
+    public void setCurrentType(type t){
+        currentType = t;
     }
 
     /*******************************************

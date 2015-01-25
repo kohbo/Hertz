@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.hackathon.team6.dataBase.dataType.Equipment;
 import com.hackathon.team6.dataBase.dataType.Image;
 import com.hackathon.team6.dataBase.dataType.Transaction;
@@ -17,6 +19,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by William on 1/24/2015.
@@ -100,9 +103,16 @@ public class DataBase   {
      * @param id
      * @return
      */
-    public  Equipment queryEquipment(int id) {
+    public List<Transaction> queryEquipment(int id) {
         String command = url+"get_ic_assessments.php?ic="+id;
-        Equipment equipment = JsonParser.parseEquipment(request(command));
+        List<Transaction> equipment = null;
+        try {
+            equipment = JsonParser.parseEquipment(request(command));
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
 
         return equipment;
     }
@@ -116,7 +126,14 @@ public class DataBase   {
      */
     public Transaction queryTransaction(int id) {
         String command = url+"get_assessment_info.php?assessment_id="+id;
-        return JsonParser.parseTransaction(request(command));
+        try {
+            return JsonParser.parseTransaction(request(command));
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
