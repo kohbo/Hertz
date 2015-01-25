@@ -15,6 +15,7 @@ public class JsonParser {
     }
 
     private JsonParser() {
+
     }
 
 
@@ -41,6 +42,5 @@ public class JsonParser {
 
     public static void main(String[] args){
         JsonParser.parseEquipment("{\"status\":0,\"data\":{\"assessment_id\":\"1\",\"ic\":\"000000001\",\"customer_id\":\"1\",\"created_by\":\"1\",\"image1\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200203.jpg\",\"image2\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200208.jpg\",\"image3\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200212.jpg\",\"image4\":\"http:\\/\\/kohding.net\\/hertz\\/images\\/1\\/IMG_20150124_200216.jpg\",\"image5\":null,\"image6\":null,\"image7\":null,\"image8\":null,\"image9\":null,\"image10\":null,\"image11\":null,\"image12\":null,\"type\":\"1\",\"loc_lat\":null,\"loc_long\":null,\"created_on\":\"2015-01-24 21:52:58\"}}");
-
     }
 }
