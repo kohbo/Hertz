@@ -69,7 +69,7 @@ public class Login_Page extends Activity {
             return;
         }
 
-        Intent intent = new Intent(this,Login_Page.class);
+        Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
 
     }
