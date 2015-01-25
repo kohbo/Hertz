@@ -19,7 +19,7 @@ public class History_Activity extends Activity {
 
     TableLayout mHistoryTable;
     TextView mEIC_Number;
-    /**
+     /**
      * Called when the activity is first created.
      */
     @Override

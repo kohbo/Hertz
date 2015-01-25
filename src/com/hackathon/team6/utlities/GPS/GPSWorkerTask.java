@@ -57,8 +57,8 @@ public class GPSWorkerTask extends AsyncTask<Void, Void, Void> {
         final TextView textView = textViewReference.get();
         final Transaction transaction = objectReference.get();
         if (textView != null && transaction != null) {
-            transaction.setLatLocation(latitude);
-            transaction.setLongLocation(longitude);
+            transaction.setLoc_lat(latitude);
+            transaction.setLoc_long(longitude);
             textView.setText(Utilities.formatGPSString(latitude,longitude));
         }
 
