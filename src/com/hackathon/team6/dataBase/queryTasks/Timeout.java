@@ -2,7 +2,6 @@ package com.hackathon.team6.dataBase.queryTasks;
 
 import android.app.Dialog;
 import android.util.Log;
-import com.hackathon.team6.dataBase.ActivityWithLoading;
 
 import java.lang.ref.WeakReference;
 
@@ -28,7 +27,7 @@ public class Timeout implements Runnable{
 
             if(dialog != null && activity != null) {
                 dialog.dismiss();
-                activity.onTimeOut();
+                activity.timeOut();
             }
         }
         catch (Exception e){

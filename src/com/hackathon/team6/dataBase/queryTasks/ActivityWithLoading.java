@@ -1,4 +1,4 @@
-package com.hackathon.team6.dataBase;
+package com.hackathon.team6.dataBase.queryTasks;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -22,6 +22,8 @@ public abstract class ActivityWithLoading extends Activity {
     public static final int TIMEOUT = 5000;
 
     protected List<AsyncTask> tasks;
+    private Handler handler;
+    private Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,16 @@ public abstract class ActivityWithLoading extends Activity {
     }
 
     public void setTimeout(long time, final Dialog d){
-        new Handler().postDelayed(new Timeout(this,d), time);
+        handler = new Handler();
+        runnable = new Timeout(this, d);
+        handler.postDelayed(runnable, time);
+    }
+
+    protected void timeOut(){
+        if(handler != null && runnable != null){
+            handler.removeCallbacks(runnable);
+        }
+        onTimeOut();
     }
 
     public abstract void onFinishLoad();
