@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Home page -->
     <string name="app_name">Quick Assess</string>
-    <string name="Rental">Rental</string>
-    <string name="Return">Return</string>
-    <string name="Sales">Sales</string>
-    <string name="FieldService">Field Service</string>
-    <string name="EquipmentHistory">Equipment History</string>
+
+    <!-- Error Strings -->
+    <string name="Error.no_connection">No Internet Connection Found</string>
+
+    <!-- Login Page Strings -->
+    <string name="Login_Page.login_button">Login</string>
+    <string name="Login_Page.login_id_hint">###-##-####</string>
+    <string name="Login_Page.login_password_hint">Password</string>
+
+    <!-- Home Page Strings -->
+    <string name="Home_Page.Rental">Rental</string>
+    <string name="Home_Page.Return">Return</string>
+    <string name="Home_Page.Sales">Sales</string>
+    <string name="Home_Page.FieldService">Field Service</string>
+    <string name="Home_Page.EquipmentHistory">Equipment History</string>
 </resources>

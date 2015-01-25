@@ -1,4 +1,4 @@
-package com.hackathon.team6.DataBase;
+package com.hackathon.team6.dataBase;
 
 import com.hackathon.team6.DataBase.DataType.Equipment;
 import com.hackathon.team6.DataBase.DataType.Image;
