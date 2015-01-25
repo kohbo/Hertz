@@ -38,7 +38,6 @@ public class Home_Page extends ActivityWithLoading {
     Button mEquipmentHistory;
 
     User user;
-    List<AsyncTask> tasks;
 
     /**
      * Called when the activity is first created.
@@ -60,7 +59,6 @@ public class Home_Page extends ActivityWithLoading {
 
         user = userPassing;
         userPassing = null;
-        tasks = new ArrayList<AsyncTask>();
 
         if(user != null) {
             mUserIC.setText(getResources().getString(R.string.Home_Page_user_id_prefix) + " " + user.getId());
@@ -111,8 +109,8 @@ public class Home_Page extends ActivityWithLoading {
     protected void verifyEIC(int eic){
         ProgressDialog mDialog = startLoad();
         UnactiveLoad unactiveLoad = new UnactiveLoad(this,mDialog);
-        unactiveLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         tasks.add(unactiveLoad);
+        unactiveLoad.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
