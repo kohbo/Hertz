@@ -2,35 +2,43 @@ package com.hackathon.team6.dataBase.dataType;
 
 import java.util.ArrayList;
 
-/**
- * Created by William on 1/24/2015.
- */
-public class Transaction {
-    private int id;
+public class Transaction{
+
+    private int assessment_id;
 
     public enum type {
-        Rental ("Rental"),
-        Return ("Return"),
-        Sales ("Sales"),
-        FieldService ("Field Services");
+        Rental("Rental"),
+        Return("Return"),
+        Sales("Sales"),
+        FieldService("Field Services");
 
         public String name;
-        type(String name){
+
+        type(String name) {
             this.name = name;
         }
     }
 
     private type currentType;
+    private int created_by;
 
-    private String lastModified;
+    private int ic;
 
-    private User createdBy;
-    private User currentUser;
-    private User lastEditedBy;
-    private Equipment equipmentId;
+    float loc_lat;
+    float loc_long;
 
-    float latLocation;
-    float longLocation;
+    private String image1;
+    private String image2;
+    private String image3;
+    private String image4;
+    private String image5;
+    private String image6;
+    private String image7;
+    private String image8;
+    private String image9;
+    private String image10;
+    private String image11;
+    private String image12;
 
     private ArrayList<Image> images;
     private int minImages;
@@ -47,89 +55,39 @@ public class Transaction {
      * @param id
      */
     public Transaction(int id) {
-        this.id = id;
+        this.assessment_id = id;
         //TODO Get Data From DataBase
     }
 
     /*
     * Getter's and Setter's
     */
-
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return assessment_id;
     }
 
     public type getCurrentType() {
         return currentType;
     }
 
-    public void setCurrentType(type currentType) {
-        this.currentType = currentType;
-        setMinNumberImage();
+    public int getCreated_by() {
+        return created_by;
     }
 
-    public String getLastModified() {
-        return lastModified;
+    public float getLoc_lat() {
+        return loc_lat;
     }
 
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
-
-    public User getLastEditedBy() {
-        return lastEditedBy;
-    }
-
-    public void setLastEditedBy(User lastEditedBy) {
-        this.lastEditedBy = lastEditedBy;
-    }
-
-    public float getLatLocation() {
-        return latLocation;
-    }
-
-    public void setLatLocation(float latLocation) {
-        this.latLocation = latLocation;
-    }
-
-    public float getLongLocation() {
-        return longLocation;
-    }
-
-    public void setLongLocation(float longLocation) {
-        this.longLocation = longLocation;
-    }
-
-    public ArrayList<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(ArrayList<Image> images) {
-        this.images = images;
+    public float getLoc_long() {
+        return loc_long;
     }
 
     public int getMinImages() {
         return minImages;
+    }
+
+    public int getIc() {
+        return ic;
     }
 
     private void setMinImages(int minImages) {
