@@ -2,8 +2,9 @@ Server Information
 
 Host: http://kohding.net/hertz/
 
-Page						Variables								Comments
-get_ic_assessments.php		ic
+Page|Variables|Comments
+----|---------|--------
+get_ic_assessments.php|ic
 get_assessment_info.php		assessment_id
 login.php					employee_id, pass
 new_assessment.php			employee_id, customer_id, ic, images	Must be POST method request 			
