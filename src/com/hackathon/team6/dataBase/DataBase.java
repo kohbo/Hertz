@@ -254,7 +254,7 @@ public class DataBase   {
      */
     public Transaction queryTransaction(int id) {
 
-//        Transaction transaction = new Transaction(id);
+        Transaction transaction = new Transaction();
 
 
         return transaction;
