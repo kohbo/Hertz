@@ -1,10 +1,11 @@
 package com.hackathon.team6.dataBase;
 
-
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.hackathon.team6.dataBase.dataType.Equipment;
-import com.hackathon.team6.dataBase.dataType.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hackathon.team6.dataBase.dataType.Equipment;
+import com.hackathon.team6.dataBase.dataType.Transaction;
+import com.hackathon.team6.dataBase.dataType.User;
 
 import java.io.IOException;
 
@@ -25,6 +26,18 @@ public class JsonParser {
     public static User parseUser(String s) {
 
         return new User(2);
+    }
+
+    public static Transaction parseTransaction(String s){
+        Transaction trans = new Transaction();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        try {
+            trans = mapper.treeToValue(mapper.readTree(s), Transaction.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return trans;
     }
 
     public static Equipment parseEquipment(String s){
@@ -54,6 +67,7 @@ public class JsonParser {
     public static User PUser(String s, int id, String pass) {
         if (s == "") {
             s = "{\"status\":0,\"data\":{\"name\":\"Ju nendez\",\"role\":\"1\"}}";
+            id=3;
         }
         char[] c = s.toCharArray();
         String name = "";
@@ -89,6 +103,4 @@ public class JsonParser {
         }
         return user;
     }
-
-
 }
