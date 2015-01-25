@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class History_Activity extends Activity {
 
     TableLayout mHistoryTable;
-    TextView mIC_Number;
+    TextView mEIC_Number;
     /**
      * Called when the activity is first created.
      */
@@ -24,8 +24,8 @@ public class History_Activity extends Activity {
         setContentView(R.layout.history);
 
         mHistoryTable = (TableLayout)findViewById(R.id.history_dynamicTable);
-        mIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
-        mIC_Number.setText("IC# 999-99-9999");
+        mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
+        mEIC_Number.setText("IC# 999-99-9999");
         ArrayList<String> myList = new ArrayList<String>();
 
         createRow("Rental", "12/29/14", "4");

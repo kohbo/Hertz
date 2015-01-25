@@ -1,6 +1,5 @@
 package com.hackathon.team6.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -71,25 +70,25 @@ public class Home_Page extends ActivityWithLoading {
         mRentalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC(Transaction.type.Rental);
+                promptForEIC();
             }
         });
         mReturnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC(Transaction.type.Return);
+                promptForEIC();
             }
         });
         mSalesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC(Transaction.type.Sales);
+                promptForEIC();
             }
         });
         mFieldService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                promptForEIC(Transaction.type.FieldService);
+                promptForEIC();
             }
         });
         mEquipmentHistory.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +134,7 @@ public class Home_Page extends ActivityWithLoading {
         tasks.clear();
     }
 
-    private void promptForEIC(final Transaction.type type){
+    private void promptForEIC(){
         String title = getResources().getString(R.string.Home_Page_Dialog_Capture_title);
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.ActivityWithLoading;
 import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.User;
 import com.hackathon.team6.utlities.Utilities;
@@ -14,7 +15,7 @@ import com.hackathon.team6.utlities.Utilities;
 /**
  * Created by Colin on 1/24/2015.
  */
-public class Login_Page extends Activity {
+public class Login_Page extends ActivityWithLoading {
 
     Button mLoginButton;
     EditText mUserField;
@@ -64,7 +65,7 @@ public class Login_Page extends Activity {
             Utilities.showToast(this,R.string.Error_no_connection);
             return;
         }
-        
+
         User user = DataBase.validateUser(userIdNumber,password);
         if(user == null){
             Utilities.showToast(this,R.string.Error_invalid_id_password);
@@ -75,5 +76,20 @@ public class Login_Page extends Activity {
         Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onFinishLoad() {
+
+    }
+
+    @Override
+    public void onLoadFailed() {
+        Utilities.showToast(this,R.string.Error_invalid_id_password);
+    }
+
+    @Override
+    public void onTimeOut() {
+        Utilities.showToast(this,R.string.Error_timeout);
     }
 }
