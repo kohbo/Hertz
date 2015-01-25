@@ -14,14 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.hackathon.team6.R;
-import com.hackathon.team6.dataBase.ActivityWithLoading;
+import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.dataBase.dataType.User;
 import com.hackathon.team6.utlities.UnactiveLoad;
 import com.hackathon.team6.utlities.Utilities;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Home_Page extends ActivityWithLoading {
 

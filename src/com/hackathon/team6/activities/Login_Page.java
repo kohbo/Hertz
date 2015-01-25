@@ -1,6 +1,5 @@
 package com.hackathon.team6.activities;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.hackathon.team6.R;
-import com.hackathon.team6.dataBase.ActivityWithLoading;
-import com.hackathon.team6.dataBase.DataBase;
-import com.hackathon.team6.dataBase.dataType.User;
+import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
 import com.hackathon.team6.dataBase.queryTasks.VerifyCredentialsWorker;
-import com.hackathon.team6.utlities.UnactiveLoad;
 import com.hackathon.team6.utlities.Utilities;
 
 /**

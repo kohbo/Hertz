@@ -2,7 +2,7 @@ package com.hackathon.team6.utlities;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import com.hackathon.team6.dataBase.ActivityWithLoading;
+import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
 
 import java.lang.ref.WeakReference;
 
