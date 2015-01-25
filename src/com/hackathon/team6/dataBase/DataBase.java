@@ -1,22 +1,12 @@
 package com.hackathon.team6.dataBase;
 
-import android.app.ProgressDialog;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
-import android.util.Log;
-import com.hackathon.team6.dataBase.dataType.Equipment;
-import com.hackathon.team6.dataBase.dataType.Image;
-import com.hackathon.team6.dataBase.dataType.Transaction;
-import com.hackathon.team6.dataBase.dataType.User;
+import com.hackathon.team6.dataBase.dataType.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * Created by William on 1/24/2015.
@@ -51,31 +41,7 @@ public class DataBase   {
     }
     private static final String url = "http://Kohding.net/hertz/";
 
-    private static String request(String command){
-        StringBuffer buffer = new StringBuffer();
-        try {
-            // Apache HTTP Reqeust
-            HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(command);
 
-            HttpResponse resp = client.execute(post);
-            // read the response
-            InputStream is  = resp.getEntity().getContent();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            StringBuilder str = new StringBuilder();
-            String line = null;
-            while((line = reader.readLine()) != null){
-                str.append(line + "\n");
-            }
-            is.close();
-            buffer.append(str.toString());
-
-        }
-        catch(Throwable t) {
-            t.printStackTrace();
-        }
-        return buffer.toString();
-    }
 
 
     /*********************************************
@@ -92,8 +58,8 @@ public class DataBase   {
      * @return User
      */
     public static User validateUser(int id, String password) {
-        String command = url+"/login.php?employee_id="+id+"&pass="+password;
 
+        String command = url + "/login.php?employee_id=" + id + "&pass=" + password;
         return JsonParser.PUser(request(command), id, password);
 
         // return JsonParser.parseUser(request(command));
@@ -193,5 +159,28 @@ public class DataBase   {
         return true;
     }
 
+    private static String request(String command) {
+        StringBuffer buffer = new StringBuffer();
+        try {
+            // Apache HTTP Reqeust
+            HttpClient client = new DefaultHttpClient();
+            HttpPost post = new HttpPost(command);
 
+            HttpResponse resp = client.execute(post);
+            // read the response
+            InputStream is = resp.getEntity().getContent();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            StringBuilder str = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                str.append(line + "\n");
+            }
+            is.close();
+            buffer.append(str.toString());
+
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+        return buffer.toString();
+    }
 }
