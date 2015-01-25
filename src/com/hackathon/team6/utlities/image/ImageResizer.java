@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -16,10 +17,15 @@ public class ImageResizer {
     public static Bitmap decodeSampledBitmapFromURI(Context context, Uri uri,
                                                          int reqWidth, int reqHeight) throws FileNotFoundException {
 
-        InputStream input;
+        InputStream input = null;
 
-        // First decode with inJustDecodeBounds=true to check dimensions
-        input = context.getContentResolver().openInputStream(uri);
+        try {
+            // First decode with inJustDecodeBounds=true to check dimensions
+            input = context.getContentResolver().openInputStream(uri);
+        }
+        catch (Exception e){
+            Log.d("DEBUG","Exception e");
+        }
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeStream(input, null, options);

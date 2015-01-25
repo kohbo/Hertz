@@ -34,33 +34,40 @@ public class Image_Capture extends GPSActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.imagecapture);
+        mIC_Number = (TextView) findViewById(R.id.image_capture_ic_number);
 
         //TODO
         transaction = new Transaction(0);
         transaction.setImages(new ArrayList<Image>());
+        transaction.setCurrentType(Transaction.type.Rental);
+        mIC_Number.setText("999-99-9999");
         //TODO
 
-        setContentView(R.layout.imagecapture);
 
-        mSubmit = (Button)findViewById(R.id.login_page_button);
-        mIC_Number = (TextView) findViewById(R.id.image_capture_ICNumber);
+
+        mSubmit = (Button)findViewById(R.id.image_capture_submit_button);
         mRental = (TextView) findViewById(R.id.image_capture_rental_type);
         mImagesCaptured = (TextView) findViewById(R.id.image_capture_images_captured);
         mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
         mGPS = (TextView)findViewById(R.id.image_capture_gps);
 
-        setNewGPS(mGPS,transaction);
+        if(transaction.getLongLocation() == 0) {
+            setNewGPS(mGPS, transaction);
+        }
 
         updateCount();
 
-        mRental.setText(transaction.getCurrentType().name);
+        if(transaction != null && transaction.getCurrentType() != null){
+            mRental.setText(transaction.getCurrentType().name);
+        }
 
         mPictureGridView.setAdapter(new GridViewAdapter(this,transaction));
         mPictureGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
-                    showToast("Clicked add picture");
+                    openImageIntent();
                 }
                 else {
                     showToast("Clicked on picture" + i);
@@ -82,7 +89,7 @@ public class Image_Capture extends GPSActivity {
     }
 
     private void updateCount(){
-        mImagesCaptured.setText(transaction.getImages().size() + getResources().getString(R.string.Capture_Screen_image_count_postfix));
+        mImagesCaptured.setText(transaction.getImages().size() + " " + getResources().getString(R.string.Capture_Screen_image_count_postfix));
     }
 
     protected void submitReport(){

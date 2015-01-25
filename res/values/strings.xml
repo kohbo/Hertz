@@ -30,5 +30,6 @@
     <string name="Capture_Screen.success">Report successfully Generated;</string>
     <string name="Capture_Screen.fail">Report has an error;</string>
     <string name="Capture_Screen.image_count_postfix">Images Captured</string>
+    <string name="Capture_Screen.submit">Submit</string>
 
 </resources>
