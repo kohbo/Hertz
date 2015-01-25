@@ -32,4 +32,5 @@ public class Equipment {
         public void setTransactions(ArrayList<Transaction> transactions) {
             this.transactions = transactions;
         }
+
 }
