@@ -28,4 +28,14 @@ public class Utilities {
         Toast.makeText(context, context.getResources().getString(id), Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Formats a GPS string as a two line string
+     * @return  the string
+     */
+    public static String formatGPSString(float latitude, float longitude){
+        String line1 = "Latitude: " + latitude;
+        String line2 = "Longitude: " + longitude;
+        return line1 + "\n" + line2;
+    }
+
 }

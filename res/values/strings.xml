@@ -9,6 +9,7 @@
     <string name="Error.empty_password">Password</string>
     <string name="Error.invalid_id_format">Invalid Id Format</string>
     <string name="Error.invalid_id_password">Invalid Id Password Combination</string>
+    <string name="Error.GPS">GPS Disabled</string>
 
     <!-- Login Page Strings -->
     <string name="Login_Page.login_button">Login</string>
@@ -16,11 +17,14 @@
     <string name="Login_Page.login_password_hint">Password</string>
     <string name="Login_Page.logo_description">Hertz Logo</string>
 
-
     <!-- Home Page Strings -->
     <string name="Home_Page.Rental">Rental</string>
     <string name="Home_Page.Return">Return</string>
     <string name="Home_Page.Sales">Sales</string>
     <string name="Home_Page.FieldService">Field Service</string>
     <string name="Home_Page.EquipmentHistory">Equipment History</string>
+
+    <!-- Capture Image Strings -->
+    <string name="Capture_Screen.GPS.loading">Loading GPS&#8230;</string>
+
 </resources>
