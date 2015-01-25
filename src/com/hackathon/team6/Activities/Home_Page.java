@@ -22,12 +22,12 @@ import com.hackathon.team6.utlities.Utilities;
 
 public class Home_Page extends ActivityWithLoading {
 
-    public static User userPassing;
+    public static User user;
 
     ImageView hertz_logo;
 
     TextView mUserName;
-    TextView mUserIC;
+    static TextView mUserIC;
     TextView mUserRole;
     //TextView number_of_pictures_field;
     Button mRentalButton;
@@ -36,7 +36,6 @@ public class Home_Page extends ActivityWithLoading {
     Button mFieldService;
     Button mEquipmentHistory;
 
-    User user;
 
     /**
      * Called when the activity is first created.
@@ -62,9 +61,6 @@ public class Home_Page extends ActivityWithLoading {
         mEquipmentHistory = (Button) findViewById(R.id.EquipmentHistory);
         mUserIC = (TextView) findViewById(R.id.home_page_user_id_textView);
         mUserRole = (TextView) findViewById(R.id.home_page_user_authorization_textView);
-
-        user = userPassing;
-        userPassing = null;
 
         if(user != null) {
             mUserName.setText(user.getName());

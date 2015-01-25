@@ -3,8 +3,10 @@ package com.hackathon.team6.activities;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.widget.*;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 
 import java.util.ArrayList;
@@ -29,12 +31,14 @@ public class History_Activity extends Activity {
 
         mHistoryTable = (TableLayout)findViewById(R.id.history_dynamicTable);
         mEIC_Number = (TextView)findViewById(R.id.history_IC_NUM);
-        mEIC_Number.setText("IC# 999-99-9999");
+        mEIC_Number.setText(Home_Page.user.getId());
 
+        DataBase query = DataBase.getInstance();
+        List<Transaction> transactions = query.queryEquipment(Home_Page.user.getId());
         
-        createRow("Rental", "12/29/14", "4");
-        createRow("Return", "12/29/14", "9");
-        createRow("Sales Only", "1/29/13", "12");
+        for(Transaction t : transactions){
+            createRow(t.getCurrentType().toString(), t.getCreated_on(),String.valueOf(t.getImageListSize()));
+        }
     }
     public void createRow(String type, String date, String imageNumber){
         TableRow myNewRow= new TableRow(this);
