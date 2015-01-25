@@ -12,6 +12,7 @@ import com.hackathon.team6.R;
 import com.hackathon.team6.activities.Image_Capture;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.image.BitmapManager;
+import com.hackathon.team6.utlities.image.Image_Activity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class GridViewAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     boolean deleteButtons;
-    Image_Capture parent;
+    Image_Activity parent;
 
-    public GridViewAdapter(Context context, Transaction transaction, boolean deleteButtons, Image_Capture parent) {
+    public GridViewAdapter(Context context, Transaction transaction, boolean deleteButtons, Image_Activity parent) {
         super();
         this.context = context;
         this.transaction = transaction;
@@ -42,7 +43,8 @@ public class GridViewAdapter extends BaseAdapter {
         if(transaction == null || transaction.getImages() == null){
             return 0;
         }
-        return transaction.getImages().size()+1;
+        //if using the adapter for the capture class, use delete buttons and make room for the add picture button
+        return transaction.getImages().size() + (deleteButtons ? 1 : 0);
     }
 
     @Override
@@ -59,12 +61,18 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View newView;
 
-        if(i == 0){
+        if(i == 0 && deleteButtons){
             newView = inflater.inflate(R.layout.gridview_add_item,viewGroup,false);
         }
         else {
             //-1 accounts for add photo position
-            final int position = i - 1;
+            final int position;
+            if(deleteButtons) {
+                position = i - 1;
+            }
+            else {
+                position = i;
+            }
 
             newView = inflater.inflate(R.layout.gridview_item,viewGroup,false);
 

@@ -52,6 +52,7 @@ public abstract class Image_Activity extends Activity {
 
     protected abstract void saveImage(Uri uri);
     protected abstract String getSaveDir();
+    public abstract void updateCount();
 
     private void setupOutputFileUri(){
         // Determine Uri of camera image to save.

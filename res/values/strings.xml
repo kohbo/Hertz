@@ -43,4 +43,10 @@
     <string name="Capture_Screen.image_count_postfix">Images Captured</string>
     <string name="Capture_Screen.submit">Submit</string>
 
+    <!-- Image Viewer Strings -->
+    <string name="Viewer_Screen.Title">Capture Image</string>
+    <string name="Viewer_Screen.image_count_postfix">Images Captured</string>
+    <string name="Viewer_Screen.lat_prefix">Latitude:</string>
+    <string name="Viewer_Screen.long_prefix">Longititude:</string>
+
 </resources>
