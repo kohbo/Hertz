@@ -1,112 +1,175 @@
 package com.hackathon.team6.dataBase.dataType;
 
-public class Transaction {
+import java.util.ArrayList;
 
-    private int assessment_id;
+/**
+ * Created by William on 1/24/2015.
+ */
+public class Transaction {
+    private int id;
 
     public enum type {
-        Rental("Rental"),
-        Return("Return"),
-        Sales("Sales"),
-        FieldService("Field Services");
+        Rental ("Rental"),
+        Return ("Return"),
+        Sales ("Sales"),
+        FieldService ("Field Services");
 
         public String name;
-
-        type(String name) {
+        type(String name){
             this.name = name;
         }
     }
 
     private type currentType;
-    private int created_by;
 
-    private int ic;
+    private String lastModified;
 
-    float loc_lat;
-    float loc_long;
+    private User createdBy;
+    private User currentUser;
+    private User lastEditedBy;
+    private Equipment equipmentId;
 
-    private String image1;
-    private String image2;
-    private String image3;
-    private String image4;
-    private String image5;
-    private String image6;
-    private String image7;
-    private String image8;
-    private String image9;
-    private String image10;
-    private String image11;
-    private String image12;
+    float latLocation;
+    float longLocation;
+
+    private ArrayList<Image> images;
+    private int minImages;
+
+    /**
+     * New TransAction Constructor
+     */
+    public Transaction() {
+
+    }
+
+    /**
+     * Past TransAction Constructor
+     * @param id
+     */
+    public Transaction(int id) {
+        this.id = id;
+        //TODO Get Data From DataBase
+    }
+
+    /*
+    * Getter's and Setter's
+    */
 
     public int getId() {
-        return assessment_id;
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public type getCurrentType() {
         return currentType;
     }
 
-    public int getCreated_by() {
-        return created_by;
+    public void setCurrentType(type currentType) {
+        this.currentType = currentType;
+        setMinNumberImage();
     }
 
-    public float getLoc_lat() {
-        return loc_lat;
+    public String getLastModified() {
+        return lastModified;
     }
 
-    public float getLoc_long() {
-        return loc_long;
+    public void setLastModified(String lastModified) {
+        this.lastModified = lastModified;
     }
 
-    public String getImage1() {
-        return image1;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public String getImage2() {
-        return image2;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public String getImage3() {
-        return image3;
+    public User getCurrentUser() {
+        return currentUser;
     }
 
-    public String getImage4() {
-        return image4;
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 
-    public String getImage5() {
-        return image5;
+    public User getLastEditedBy() {
+        return lastEditedBy;
     }
 
-    public String getImage6() {
-        return image6;
+    public void setLastEditedBy(User lastEditedBy) {
+        this.lastEditedBy = lastEditedBy;
     }
 
-    public String getImage7() {
-        return image7;
+    public float getLatLocation() {
+        return latLocation;
     }
 
-    public String getImage8() {
-        return image8;
+    public void setLatLocation(float latLocation) {
+        this.latLocation = latLocation;
     }
 
-    public String getImage9() {
-        return image9;
+    public float getLongLocation() {
+        return longLocation;
     }
 
-    public String getImage10() {
-        return image10;
+    public void setLongLocation(float longLocation) {
+        this.longLocation = longLocation;
     }
 
-    public String getImage11() {
-        return image11;
+    public ArrayList<Image> getImages() {
+        return images;
     }
 
-    public String getImage12() {
-        return image12;
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
     }
 
-    public int getIc() {
-        return ic;
+    public int getMinImages() {
+        return minImages;
+    }
+
+    private void setMinImages(int minImages) {
+        this.minImages = minImages;
+    }
+
+    /*******************************************
+     *
+     * Utility Methods
+     *
+     ******************************************/
+
+    /**
+     * Sets Min Images based on Transaction Type
+     */
+    public void setMinNumberImage() {
+        switch (currentType) {
+            case Rental:
+                minImages = 2;
+                break;
+
+            case Return:
+                minImages = 4;
+                break;
+
+            case Sales:
+                minImages = 6;
+                break;
+
+            case FieldService:
+                minImages = 8;
+                break;
+
+            default:
+                minImages = 12;
+                break;
+        }
+    }
+
+    public boolean completeTransaction(){
+        return true;
     }
 }
