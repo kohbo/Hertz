@@ -6,50 +6,51 @@
                 android:id="@+id/historyView_item_layout">
     <TableLayout android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-            android:id="@+id/history_table"
-            >
-    <TableRow android:layout_width="fill_parent"
-              android:layout_height="50dp"
+                 android:id="@+id/history_table"
 
             >
-    <TextView
-            android:layout_marginLeft="25dp"
-            android:text="sadfsaf"
-            android:paddingTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:id="@+id/history_type"
-            android:layout_marginRight="30dp"
-            />
-    <TextView
-            android:text="sadfsaf"
-            android:paddingTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/history_date"
-            android:layout_gravity="right"
-            android:layout_marginRight="50dp"
-            />
+        <TableRow android:layout_width="fill_parent"
+                  android:layout_height="50dp"
 
-    <TextView
-            android:text="sadfsaf"
-            android:paddingTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/history_imgNum"
-            android:layout_gravity="right"
-            android:layout_marginRight="50dp"
-            />
+                >
+            <TextView
+                    android:layout_marginLeft="25dp"
+                    android:text="sadfsaf"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:id="@+id/history_type"
+                    android:layout_marginRight="30dp"
+                    />
+            <TextView
+                    android:text="sadfsaf"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/history_date"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="50dp"
+                    />
 
-    <Button
-            android:text="View"
-            android:paddingTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/history_item_button"
-            android:layout_gravity="right"
-            />
-    </TableRow>
+            <TextView
+                    android:text="sadfsaf"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/history_imgNum"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="50dp"
+                    />
+
+            <Button
+                    android:text="View"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/history_item_button"
+                    android:layout_gravity="right"
+                    />
+        </TableRow>
     </TableLayout>
 </RelativeLayout>
