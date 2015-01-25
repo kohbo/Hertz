@@ -168,5 +168,7 @@ public class Transaction {
         }
     }
 
-
+    public boolean completeTransaction(){
+        return true;
+    }
 }
