@@ -10,6 +10,7 @@
     <string name="Error.invalid_id_format">Invalid Id Format</string>
     <string name="Error.invalid_id_password">Invalid Id Password Combination</string>
     <string name="Error.GPS">GPS Disabled</string>
+    <string name="Error.HomePage">Implement activity intents</string>
 
     <!-- Login Page Strings -->
     <string name="Login_Page.login_button">Login</string>

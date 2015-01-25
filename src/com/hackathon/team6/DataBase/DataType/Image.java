@@ -7,7 +7,7 @@ public class Image {
 
 
     private int id; //timeStamp
-    private String path;
+    private String uri;
 
 
 
@@ -27,11 +27,5 @@ public class Image {
         return id;
     }
 
-    public String getPath() {
-        return path;
-    }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
 }

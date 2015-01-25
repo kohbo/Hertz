@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public class Equipment {
 
     private int id;
-    private ArrayList<Image[]> images;
     private ArrayList<Transaction> transactions;
 
 
     public Equipment(int id) {
         this.id = id;
+
         //TODO Get Data From DataBase
     }
 
@@ -23,14 +23,6 @@ public class Equipment {
 
     public int getId() {
         return id;
-    }
-
-    public ArrayList<Image[]> getImages() {
-        return images;
-    }
-
-    public void setImages(ArrayList<Image[]> images) {
-        this.images = images;
     }
 
     public ArrayList<Transaction> getTransactions() {

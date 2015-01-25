@@ -1,7 +1,5 @@
 package com.hackathon.team6.dataBase.dataType;
 
-
-
 /**
  * Created by William on 1/24/2015.
  */
@@ -12,7 +10,6 @@ public class User {
     private String password;
     private String Name;
     private role currentRole;
-
 
     private enum role {
         Retail,
@@ -56,6 +53,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }
