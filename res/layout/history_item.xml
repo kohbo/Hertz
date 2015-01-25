@@ -4,6 +4,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/historyView_item_layout">
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+            android:id="@+id/"
+            >
     <TableRow android:layout_width="fill_parent"
               android:layout_height="50dp"
 
@@ -47,4 +51,5 @@
             android:layout_gravity="right"
             />
     </TableRow>
+    </TableLayout>
 </RelativeLayout>
