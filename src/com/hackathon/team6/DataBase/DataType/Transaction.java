@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Transaction{
 
+    final public static int MAX_PICTURES = 12;
+
     private int assessment_id;
 
     public enum type {
