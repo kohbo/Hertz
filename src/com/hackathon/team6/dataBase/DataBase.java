@@ -109,6 +109,7 @@ public class DataBase   {
         List<Transaction> equipment = null;
         try {
             equipment = JsonParser.parseEquipment(request(command));
+            System.out.println(equipment);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
