@@ -9,13 +9,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/gridView_item_imageView"
-            android:layout_gravity="center"
-            />
-
-    <Button
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/gridView_item_button"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/xmark"/>
+            android:src="@drawable/camera"
+            android:padding="5dp"/>
 </RelativeLayout>

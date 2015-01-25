@@ -76,25 +76,21 @@ public class Home_Page extends Activity {
     protected void rentReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
-        intent.putExtra("type", Transaction.type.Rental.name);
         startActivity(intent);
     }
     protected void returnReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
-        intent.putExtra("type", Transaction.type.Return.name);
         startActivity(intent);
     }
     protected void salesReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
-        intent.putExtra("type", Transaction.type.Sales.name);
         startActivity(intent);
     }
     protected void fieldServiceReport() {
         Utilities.showToast(this,R.string.Error_HomePage);
         Intent intent = new Intent(this,Image_Capture.class);
-        intent.putExtra("type", Transaction.type.FieldService.name);
         startActivity(intent);
     }
     protected void equipmentHistoryReport() {

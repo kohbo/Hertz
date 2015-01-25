@@ -51,20 +51,23 @@ public abstract class GPSActivity extends Image_Activity {
         mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         mlocListener = new MyLocationManager(mlocManager);
 
-        if(mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
-                (mlocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) && Utilities.isOnline(this))){
-            String provider;
-            Criteria criteria = new Criteria();
-            criteria.setAccuracy(Criteria.ACCURACY_FINE);
-            criteria.setHorizontalAccuracy(Criteria.ACCURACY_HIGH);
-            criteria.setVerticalAccuracy(Criteria.ACCURACY_HIGH);
-            criteria.setAltitudeRequired(true);
-            provider = mlocManager.getBestProvider(criteria,true);
-            mlocManager.requestLocationUpdates(provider , 0, 0, mlocListener);
+        String provider = null;
+
+        if((mlocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) && Utilities.isOnline(this))){
+            provider = LocationManager.NETWORK_PROVIDER;
+        }
+        else if(mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            provider = LocationManager.GPS_PROVIDER;
         }
         else{
             Utilities.showToast(this,R.string.Error_GPS);
         }
+
+        if(provider != null){
+            Criteria criteria = new Criteria();
+            mlocManager.requestLocationUpdates(provider , 0, 0, mlocListener);
+        }
+
     }
 
     private void stopGPS(){

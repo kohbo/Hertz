@@ -55,6 +55,7 @@ public abstract class Image_Activity extends Activity {
         // Determine Uri of camera image to save.
         final String fname = "img_"+ System.currentTimeMillis() + ".jpg";
         File dir = new File(getSaveDir());
+        dir.mkdirs();
         final File sdImageMainDirectory = new File(dir, fname);
         outputFileUri = Uri.fromFile(sdImageMainDirectory);
 
@@ -66,10 +67,6 @@ public abstract class Image_Activity extends Activity {
         Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
         startActivityForResult(captureIntent, PICTURE_URI_REQUEST);
-    }
-
-    protected void setImageViewPicture(Uri uri, ImageView iv){
-        tasks.add(BitmapManager.setImageView(iv, this, uri, 400, 400));
     }
 
     @Override
