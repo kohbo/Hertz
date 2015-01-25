@@ -1,19 +1,15 @@
 package com.hackathon.team6.utlities.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.hackathon.team6.R;
-import com.hackathon.team6.activities.Image_Capture;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.image.BitmapManager;
 import com.hackathon.team6.utlities.image.Image_Activity;
-import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.util.ArrayList;
 
@@ -33,6 +29,7 @@ public class GridViewAdapter extends BaseAdapter {
         super();
         this.context = context;
         this.transaction = transaction;
+        this.parent = parent;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         tasks = new ArrayList<AsyncTask>();
         this.deleteButtons = deleteButtons;
@@ -40,16 +37,16 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if(transaction == null || transaction.getImages() == null){
+        if(transaction == null || transaction.getUris() == null){
             return 0;
         }
         //if using the adapter for the capture class, use delete buttons and make room for the add picture button
-        return transaction.getImages().size() + (deleteButtons ? 1 : 0);
+        return transaction.getUris().size() + (deleteButtons ? 1 : 0);
     }
 
     @Override
     public Object getItem(int i) {
-        return transaction.getImages().get(i);
+        return transaction.getUris().get(i);
     }
 
     @Override
@@ -87,15 +84,15 @@ public class GridViewAdapter extends BaseAdapter {
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        transaction.getImages().remove(position);
+                        transaction.getUris().remove(position);
                         parent.updateCount();
                         notifyDataSetChanged();
                     }
                 });
             }
 
-            if(transaction.getImages().get(position).getUri() != null){
-                tasks.add(BitmapManager.setImageView(iv, context, transaction.getImages().get(position).getUri(), 120, 120));
+            if(transaction.getUris().get(position) != null){
+                tasks.add(BitmapManager.setImageView(iv, context, transaction.getUris().get(position), 120, 120));
             }
 
             iv.setFocusable(false);

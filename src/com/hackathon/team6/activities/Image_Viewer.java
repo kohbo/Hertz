@@ -1,11 +1,9 @@
 package com.hackathon.team6.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -14,7 +12,6 @@ import com.hackathon.team6.dataBase.dataType.Image;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.utlities.Utilities;
 import com.hackathon.team6.utlities.adapters.GridViewAdapter;
-import com.hackathon.team6.utlities.gps.GPSActivity;
 import com.hackathon.team6.utlities.image.Image_Activity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
@@ -84,7 +81,7 @@ public class Image_Viewer extends Image_Activity {
 
     @Override
     public void updateCount(){
-        String line1 = transaction.getImages().size() + "/" + Transaction.MAX_PICTURES + " " +
+        String line1 = transaction.getUris().size() + "/" + Transaction.MAX_PICTURES + " " +
                 getResources().getString(R.string.Capture_Screen_image_count_postfix);
         String line2 = transaction.getMinImages() + " min for " + transaction.getCurrentType().name;
         mImagesCaptured.setText(line1 + "\n" + line2);
@@ -92,7 +89,7 @@ public class Image_Viewer extends Image_Activity {
 
     @Override
     protected void saveImage(Uri uri) {
-        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+        transaction.getUris().add(uri);
         updateCount();
     }
 

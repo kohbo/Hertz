@@ -1,5 +1,7 @@
 package com.hackathon.team6.dataBase.dataType;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 
 public class Transaction{
@@ -49,13 +51,16 @@ public class Transaction{
     private String image12;
 
     private ArrayList<Image> images;
+    private ArrayList<Uri> uri;
+
     private int minImages;
 
     /**
      * New TransAction Constructor
      */
     public Transaction() {
-
+        setCurrentType(type.Rental);
+        uri = new ArrayList<Uri>();
     }
 
     /**
@@ -64,7 +69,8 @@ public class Transaction{
      */
     public Transaction(int id) {
         this.assessment_id = id;
-        //TODO Get Data From DataBase
+        setCurrentType(type.Rental);
+        uri = new ArrayList<Uri>();
     }
 
     /*
@@ -110,21 +116,8 @@ public class Transaction{
         this.loc_long = loc_long;
     }
 
-    public ArrayList<Image> getImages() {
-        ArrayList<Image> images = new ArrayList();
-        images.add(new Image(image1));
-        images.add(new Image(image2));
-        images.add(new Image(image3));
-        images.add(new Image(image4));
-        images.add(new Image(image5));
-        images.add(new Image(image6));
-        images.add(new Image(image7));
-        images.add(new Image(image8));
-        images.add(new Image(image9));
-        images.add(new Image(image10));
-        images.add(new Image(image11));
-        images.add(new Image(image12));
-        return images;
+    public ArrayList<Uri> getUris() {
+        return uri;
     }
 
     public void setImages(ArrayList<Image> images){
@@ -143,6 +136,7 @@ public class Transaction{
 
     public void setCurrentType(type t){
         currentType = t;
+        setMinNumberImage();
     }
 
     /*******************************************

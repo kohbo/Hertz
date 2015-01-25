@@ -14,7 +14,6 @@ import com.hackathon.team6.utlities.gps.GPSActivity;
 import com.hackathon.team6.utlities.image.PictureFileManager;
 
 import java.io.File;
-import java.util.ArrayList;
 
 /**
  * Created by brian on 1/24/2015.
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 public class Image_Capture extends GPSActivity {
 
     public static Transaction transaction;
+    public static Transaction.type type;
 
     Button mSubmit;
     TextView mIC_Number;
@@ -56,6 +56,7 @@ public class Image_Capture extends GPSActivity {
 
         if(transaction != null && transaction.getCurrentType() != null){
             mRental.setText(transaction.getCurrentType().name);
+            transaction.setCurrentType(type);
         }
 
 
@@ -65,7 +66,7 @@ public class Image_Capture extends GPSActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
-                    if(transaction.getImages().size() < Transaction.MAX_PICTURES){
+                    if(transaction.getUris().size() < Transaction.MAX_PICTURES){
                         openImageIntent();
                     }
                     else {
@@ -93,14 +94,14 @@ public class Image_Capture extends GPSActivity {
 
     @Override
     public void updateCount(){
-        String line1 = transaction.getImages().size() + "/" + Transaction.MAX_PICTURES + " " +
+        String line1 = transaction.getUris().size() + "/" + Transaction.MAX_PICTURES + " " +
                 getResources().getString(R.string.Capture_Screen_image_count_postfix);
         String line2 = transaction.getMinImages() + " min for " + transaction.getCurrentType().name;
         mImagesCaptured.setText(line1 + "\n" + line2);
     }
 
     protected void submitReport(){
-        if(transaction.getImages().size() > transaction.getMinImages()){
+        if(transaction.getUris().size() > transaction.getMinImages()){
             Utilities.showToast(this, R.string.Capture_Screen_success);
             finish();
         }
@@ -111,7 +112,7 @@ public class Image_Capture extends GPSActivity {
 
     @Override
     protected void saveImage(Uri uri) {
-        transaction.getImages().add(new Image((int)System.currentTimeMillis(),uri));
+        transaction.getUris().add(uri);
         updateCount();
     }
 

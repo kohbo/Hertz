@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.hackathon.team6.R;
+import com.hackathon.team6.dataBase.dataType.Transaction;
 import com.hackathon.team6.dataBase.queryTasks.ActivityWithLoading;
 import com.hackathon.team6.dataBase.dataType.User;
 import com.hackathon.team6.dataBase.queryTasks.GetTransactionsListWorker;
@@ -79,24 +80,28 @@ public class Home_Page extends ActivityWithLoading {
         mRentalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Image_Capture.type = Transaction.type.Rental;
                 promptForEIC(false);
             }
         });
         mReturnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Image_Capture.type = Transaction.type.Return;
                 promptForEIC(false);
             }
         });
         mSalesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Image_Capture.type = Transaction.type.Sales;
                 promptForEIC(false);
             }
         });
         mFieldService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Image_Capture.type = Transaction.type.FieldService;
                 promptForEIC(false);
             }
         });
