@@ -45,8 +45,16 @@ public class JsonParser {
 
     }
 
-    public static User PUser(String s, int id, String pass) {
+    public static Equipment PEquipment(String s, int id) {
 
+        return null;
+    }
+
+
+    public static User PUser(String s, int id, String pass) {
+        if (s == "") {
+            s = "{\"status\":0,\"data\":{\"name\":\"Ju nendez\",\"role\":\"1\"}}";
+        }
         char[] c = s.toCharArray();
         String name = "";
         int role;
@@ -81,4 +89,6 @@ public class JsonParser {
         }
         return user;
     }
+
+
 }
