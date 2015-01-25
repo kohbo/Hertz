@@ -35,17 +35,17 @@ public class UpdateTransactionWorker extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         ProgressDialog progressDialog = toDismiss.get();
-        if(progressDialog != null){
+        if (progressDialog != null) {
             progressDialog.dismiss();
         }
 
         ActivityWithLoading home_page = onFinish.get();
-        if(home_page != null){
+        if (home_page != null) {
             Image_Capture.transaction = transaction;
-            if(transaction != null){
+            if (transaction != null) {
+
                 home_page.finishLoad(0);
-            }
-            else {
+            } else {
                 home_page.failLoad();
             }
         }

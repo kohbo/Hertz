@@ -35,9 +35,8 @@ public class BitmapWorkerTaskUri extends AsyncTask<Uri, Void, Bitmap> {
 
         try {
             toReturn = ImageResizer.decodeSampledBitmapFromURI(context, data, width, height);
-        }
-        catch (FileNotFoundException e){
-            Log.d("DEBUG","File Not Found Caught");
+        } catch (FileNotFoundException e) {
+            Log.d("DEBUG", "File Not Found Caught");
         }
 
         return toReturn;
@@ -54,7 +53,6 @@ public class BitmapWorkerTaskUri extends AsyncTask<Uri, Void, Bitmap> {
             }
         }
     }
-
 
 
 }

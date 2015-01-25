@@ -1,6 +1,5 @@
 package com.hackathon.team6.utlities.image;
 
-import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;
@@ -12,8 +11,8 @@ public class PictureFileManager {
 
     private static final String APP_NAME = "Quick Assess";
 
-    public static String getDir(){
-        return  Environment.getExternalStorageDirectory().toString() + File.separator +
+    public static String getDir() {
+        return Environment.getExternalStorageDirectory().toString() + File.separator +
                 APP_NAME + File.separator + "temp" + File.separator;
     }
 
@@ -22,22 +21,21 @@ public class PictureFileManager {
         return deleteDirectory(dir);
     }
 
-    public static boolean deleteDirectory(File dir){
-        if( dir.exists() ) {
+    public static boolean deleteDirectory(File dir) {
+        if (dir.exists()) {
             File[] files = dir.listFiles();
             if (files == null) {
-                return( dir.delete() );
+                return (dir.delete());
             }
-            for(int i=0; i<files.length; i++) {
-                if(files[i].isDirectory()) {
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isDirectory()) {
                     deleteDirectory(files[i]);
-                }
-                else {
+                } else {
                     files[i].delete();
                 }
             }
         }
-        return( dir.delete() );
+        return (dir.delete());
     }
 
 }
