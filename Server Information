@@ -13,4 +13,4 @@ login.php
 	employee_id, pass
 
 new_assessment.php (Must be POST method request)
-	employee_id, customer_id, ic, type, images
+	employee_id, customer_id, ic, type, loc_lat, loc_long, images
