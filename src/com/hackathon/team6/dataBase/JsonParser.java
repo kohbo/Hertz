@@ -1,10 +1,6 @@
 package com.hackathon.team6.dataBase;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.hackathon.team6.dataBase.dataType.Equipment;
-import com.hackathon.team6.dataBase.dataType.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
@@ -30,16 +26,17 @@ public class JsonParser {
     }
 
     public static Equipment parseEquipment(String s){
-        ObjectMapper mapper = new ObjectMapper();
+        //ObjectMapper mapper = new ObjectMapper();
         try {
-            JsonNode rootNode = mapper.readTree(s);
-            JsonNode dataNode = rootNode.path("data");
+          //  JsonNode rootNode = mapper.readTree(s);
+          //  JsonNode dataNode = rootNode.path("data");
             System.out.println(dataNode.asText());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return new Equipment(2);
+       // return new Equipment(2);
+        return null;
     }
 
     public static void main(String[] args){
