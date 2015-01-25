@@ -24,6 +24,12 @@ public class Transaction{
     private type currentType;
     private int created_by;
 
+    public String getCreated_on() {
+        return created_on;
+    }
+
+    private String created_on;
+
     private int ic;
 
     float loc_lat;

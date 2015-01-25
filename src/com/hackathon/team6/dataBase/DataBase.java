@@ -92,9 +92,15 @@ public class DataBase   {
      */
     public static User validateUser(int id, String password) {
         String command = url+"/login.php?employee_id="+id+"&pass="+password;
-        return JsonParser.PUser(request(command), id, password);
-
-        // return JsonParser.parseUser(request(command));
+        User user = null;
+        try {
+             user = JsonParser.parseUser(request(command), id, password);
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     /**
