@@ -75,7 +75,7 @@ public class Login_Page extends ActivityWithLoading {
     }
 
     @Override
-    public void onFinishLoad() {
+    public void onFinishLoad(int result) {
         Intent intent = new Intent(this,Home_Page.class);
         startActivity(intent);
     }

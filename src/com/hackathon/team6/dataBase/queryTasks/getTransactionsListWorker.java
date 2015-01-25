@@ -2,6 +2,8 @@ package com.hackathon.team6.dataBase.queryTasks;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import com.hackathon.team6.activities.History_Activity;
+import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.Transaction;
 
 import java.lang.ref.WeakReference;
@@ -27,7 +29,7 @@ public class getTransactionsListWorker extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        //transactions = DataBase.validateUser(id,pass);
+        transactions = DataBase.getInstance().queryEquipment(eic);
         return null;
     }
 
@@ -42,8 +44,8 @@ public class getTransactionsListWorker extends AsyncTask<Void, Void, Void> {
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
             if(transactions != null){
-                //Image_Capture.transactionPassing = transaction;
-                home_page.finishLoad();
+                History_Activity.transactions = transactions;
+                home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_LIST);
             }
             else {
                 home_page.failLoad();

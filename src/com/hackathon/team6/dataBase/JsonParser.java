@@ -40,9 +40,12 @@ public class JsonParser {
         mapper.setVisibility(PropertyAccessor.ALL,
                 JsonAutoDetect.Visibility.ANY);
 
+
         try {
             myUser = mapper.treeToValue(mapper.readTree(s), com.hackathon.team6.dataBase.dataType.User.class);
-
+            if(myUser.getStatus() > 0){
+                return null;
+            }
         myUser.setPassword(pass);
         myUser.setId(id);
 

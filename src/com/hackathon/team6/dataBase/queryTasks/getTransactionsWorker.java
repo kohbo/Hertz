@@ -42,7 +42,7 @@ public class getTransactionsWorker extends AsyncTask<Void, Void, Void> {
         if(home_page != null){
             if(transaction != null){
                 //Image_Capture.transactionPassing = transaction;
-                home_page.finishLoad();
+                home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_TRANSACTION);
             }
             else {
                 home_page.failLoad();

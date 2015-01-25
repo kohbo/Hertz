@@ -101,7 +101,7 @@ public class Home_Page extends ActivityWithLoading {
         mEquipmentHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToHistory(Transaction.type.Rental);
+                goToHistory();
             }
         });
 
@@ -110,7 +110,7 @@ public class Home_Page extends ActivityWithLoading {
     /*
     Generates report of type
      */
-    protected void goToCapture(int eic, Transaction.type type){
+    protected void goToCapture(){
         Intent intent = new Intent(this,Image_Capture.class);
         startActivity(intent);
     }
@@ -123,8 +123,13 @@ public class Home_Page extends ActivityWithLoading {
     }
 
     @Override
-    public void onFinishLoad() {
-        goToCapture(999999999, Transaction.type.Rental);
+    public void onFinishLoad(int result) {
+        if(result == REQUEST_CODE_TRANSACTION){
+            goToCapture();
+        }
+        else if(result == REQUEST_CODE_LIST){
+            goToHistory();
+        }
     }
 
     @Override
@@ -162,7 +167,7 @@ public class Home_Page extends ActivityWithLoading {
         alertDialog.show();
     }
 
-    protected void goToHistory(Transaction.type type){
+    protected void goToHistory(){
         Utilities.showToast(this,"Not yet implemented");
     }
 

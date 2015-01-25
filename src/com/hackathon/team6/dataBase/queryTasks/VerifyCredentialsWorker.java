@@ -46,7 +46,7 @@ public class VerifyCredentialsWorker extends AsyncTask<Void, Void, Void> {
         if(home_page != null){
             if(user != null){
                 Home_Page.user = user;
-                home_page.finishLoad();
+                home_page.finishLoad(ActivityWithLoading.REQUEST_CODE_USER);
             }
             else {
                 home_page.failLoad();

@@ -16,6 +16,9 @@ import java.util.List;
  */
 public abstract class ActivityWithLoading extends Activity {
 
+    public static int REQUEST_CODE_TRANSACTION = 1;
+    public static int REQUEST_CODE_LIST = 2;
+    public static int REQUEST_CODE_USER = 3;
     public static final int TIMEOUT = 5000;
 
     protected List<AsyncTask> tasks;
@@ -65,9 +68,9 @@ public abstract class ActivityWithLoading extends Activity {
         }
     }
 
-    public void finishLoad(){
+    public void finishLoad(int result){
         removeTimer();
-        onFinishLoad();
+        onFinishLoad(result);
     }
 
     public void failLoad(){
@@ -75,7 +78,7 @@ public abstract class ActivityWithLoading extends Activity {
         onLoadFailed();
     }
 
-    protected abstract void onFinishLoad();
+    protected abstract void onFinishLoad(int result);
     protected abstract void onLoadFailed();
     protected abstract void onTimeOut();
 

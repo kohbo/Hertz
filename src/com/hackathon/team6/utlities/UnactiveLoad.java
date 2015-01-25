@@ -39,7 +39,7 @@ public class UnactiveLoad extends AsyncTask<Void, Void, Void> {
         ActivityWithLoading home_page = onFinish.get();
         if(home_page != null){
             if(true){
-                home_page.finishLoad();
+                home_page.finishLoad(0);
             }
             else {
                 home_page.failLoad();
