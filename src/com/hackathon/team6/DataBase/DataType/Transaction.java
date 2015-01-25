@@ -26,9 +26,20 @@ public class Transaction {
     float latLocation;
     float longLocation;
 
+    private ArrayList<Image> images;
     private int minImages;
 
+    /**
+     * New TransAction Constructor
+     */
+    public Transaction() {
 
+    }
+
+    /**
+     * Past TransAction Constructor
+     * @param id
+     */
     public Transaction(int id) {
         this.id = id;
         //TODO Get Data From DataBase
@@ -52,6 +63,7 @@ public class Transaction {
 
     public void setCurrentType(type currentType) {
         this.currentType = currentType;
+        setMinNumberImage();
     }
 
     public String getLastModified() {
@@ -102,11 +114,19 @@ public class Transaction {
         this.longLocation = longLocation;
     }
 
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
+    }
+
     public int getMinImages() {
         return minImages;
     }
 
-    public void setMinImages(int minImages) {
+    private void setMinImages(int minImages) {
         this.minImages = minImages;
     }
 

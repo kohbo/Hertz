@@ -92,7 +92,6 @@ public class DataBase {
         }
     }
 
-
     /**
      * Queries User Data and Creates User Class
      *
@@ -129,7 +128,6 @@ public class DataBase {
         return equipment;
     }
 
-
     /**
      * Queries Image Data and Creates Image Class
      *
@@ -141,7 +139,5 @@ public class DataBase {
         Image image = new Image(id);
         return image;
     }
-    
-
 
 }
