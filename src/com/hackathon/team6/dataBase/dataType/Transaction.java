@@ -40,26 +40,6 @@ public class Transaction{
     private String image11;
     private String image12;
 
-    public int getId() {
-        return assessment_id;
-    }
-
-    public type getCurrentType() {
-        return currentType;
-    }
-
-    public int getCreated_by() {
-        return created_by;
-    }
-
-    public float getLoc_lat() {
-        return loc_lat;
-    }
-
-    public float getLoc_long() {
-        return loc_long;
-    }
-
     private ArrayList<Image> images;
     private int minImages;
 
@@ -82,10 +62,32 @@ public class Transaction{
     /*
     * Getter's and Setter's
     */
+    public int getId() {
+        return assessment_id;
+    }
 
+    public type getCurrentType() {
+        return currentType;
+    }
+
+    public int getCreated_by() {
+        return created_by;
+    }
+
+    public float getLoc_lat() {
+        return loc_lat;
+    }
+
+    public float getLoc_long() {
+        return loc_long;
+    }
 
     public int getMinImages() {
         return minImages;
+    }
+
+    public int getIc() {
+        return ic;
     }
 
     private void setMinImages(int minImages) {
