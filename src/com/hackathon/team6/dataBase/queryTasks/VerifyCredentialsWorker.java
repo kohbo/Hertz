@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import com.hackathon.team6.activities.Home_Page;
 import com.hackathon.team6.dataBase.ActivityWithLoading;
+import com.hackathon.team6.dataBase.DataBase;
 import com.hackathon.team6.dataBase.dataType.User;
 
 import java.lang.ref.WeakReference;
