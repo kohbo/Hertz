@@ -10,6 +10,8 @@
     <string name="Login_Page.login_button">Login</string>
     <string name="Login_Page.login_id_hint">###-##-####</string>
     <string name="Login_Page.login_password_hint">Password</string>
+    <string name="Login_Page.logo_description">Hertz Logo</string>
+
 
     <!-- Home Page Strings -->
     <string name="Home_Page.Rental">Rental</string>
