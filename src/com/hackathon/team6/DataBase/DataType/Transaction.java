@@ -35,7 +35,6 @@ public class Transaction {
     /*
     * Getter's and Setter's
     */
-
     public int getId() {
         return id;
     }
