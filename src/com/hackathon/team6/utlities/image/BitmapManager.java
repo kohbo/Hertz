@@ -7,10 +7,10 @@ import android.widget.ImageView;
 
 public class BitmapManager {
 
-    public static BitmapWorkerTaskUri setImageView(ImageView imageView, Context context, Uri uri, int width, int height){
+    public static BitmapWorkerTaskUri setImageView(ImageView imageView, Context context, Uri uri, int width, int height) {
         imageView.setImageResource(android.R.color.transparent);
         BitmapWorkerTaskUri task = new BitmapWorkerTaskUri(imageView, context, width, height);
-        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,uri);
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, uri);
         return task;
     }
 

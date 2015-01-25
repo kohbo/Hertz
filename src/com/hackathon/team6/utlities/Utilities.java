@@ -10,8 +10,9 @@ public class Utilities {
 
     /**
      * Checks if the android device has a network service active
-     * @param context   context of application needed for the check
-     * @return          boolean value if network is active
+     *
+     * @param context context of application needed for the check
+     * @return boolean value if network is active
      */
     public static boolean isOnline(Context context) {
         ConnectivityManager cm =
@@ -30,9 +31,10 @@ public class Utilities {
 
     /**
      * Formats a GPS string as a two line string
-     * @return  the string
+     *
+     * @return the string
      */
-    public static String formatGPSString(float latitude, float longitude){
+    public static String formatGPSString(float latitude, float longitude) {
         String line1 = "Latitude: " + latitude;
         String line2 = "Longitude: " + longitude;
         return line1 + "\n" + line2;

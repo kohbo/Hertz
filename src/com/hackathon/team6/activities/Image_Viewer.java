@@ -52,11 +52,11 @@ public class Image_Viewer extends Image_Activity {
         mIC_Number.setText("999-99-9999");
         //TODO
 
-        mSubmit = (Button)findViewById(R.id.image_capture_submit_button);
+        mSubmit = (Button) findViewById(R.id.image_capture_submit_button);
         mRental = (TextView) findViewById(R.id.image_capture_rental_type);
         mImagesCaptured = (TextView) findViewById(R.id.image_capture_images_captured);
         mPictureGridView = (GridView) findViewById(R.id.image_capture_gridView);
-        mGPS = (TextView)findViewById(R.id.image_capture_gps);
+        mGPS = (TextView) findViewById(R.id.image_capture_gps);
 
 
         mSubmit.setText(View.GONE);
@@ -67,21 +67,22 @@ public class Image_Viewer extends Image_Activity {
 
         updateCount();
 
-        if(transaction != null && transaction.getCurrentType() != null){
+        if (transaction != null && transaction.getCurrentType() != null) {
             mRental.setText(transaction.getCurrentType().name);
         }
 
-        mPictureGridView.setAdapter(new GridViewAdapter(this,transaction,false,this));
+        mPictureGridView.setAdapter(new GridViewAdapter(this, transaction, false, this));
     }
 
     //temp
-    private void showToast(String message){
+    private void showToast(String message) {
         Utilities.showToast(this, message);
     }
 
     @Override
     public void updateCount(){
         String line1 = transaction.getUris().size() + "/" + Transaction.MAX_PICTURES + " " +
+
                 getResources().getString(R.string.Capture_Screen_image_count_postfix);
         String line2 = transaction.getMinImages() + " min for " + transaction.getCurrentType().name;
         mImagesCaptured.setText(line1 + "\n" + line2);

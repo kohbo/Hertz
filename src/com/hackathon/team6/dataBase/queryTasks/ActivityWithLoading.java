@@ -20,6 +20,7 @@ public abstract class ActivityWithLoading extends Activity {
     public static int REQUEST_CODE_LIST = 2;
     public static int REQUEST_CODE_USER = 3;
     public static final int TIMEOUT = 5000;
+    public static boolean DEBUG = true;
 
     protected List<AsyncTask> tasks;
     private Handler handler;
@@ -33,53 +34,57 @@ public abstract class ActivityWithLoading extends Activity {
 
     @Override
     protected void onStop() {
-        if(tasks != null){
+        if (tasks != null) {
             stopAllTasks();
         }
         super.onStop();
     }
 
-    protected void stopAllTasks(){
-        for(AsyncTask asyncTask : tasks){
+    protected void stopAllTasks() {
+        for (AsyncTask asyncTask : tasks) {
             asyncTask.cancel(true);
         }
         tasks.clear();
     }
 
-    protected ProgressDialog startLoad(){
+    protected ProgressDialog startLoad() {
         ProgressDialog mDialog = new ProgressDialog(this);
         mDialog.setMessage("Querying Server...");
         mDialog.setCancelable(false);
         mDialog.show();
-        setTimeout(TIMEOUT,mDialog);
+        setTimeout(TIMEOUT, mDialog);
         return mDialog;
     }
 
-    public void setTimeout(long time, final Dialog d){
-        handler = new Handler();
-        runnable = new Timeout(this, d);
-        handler.postDelayed(runnable, time);
-    }
 
-    protected void removeTimer(){
-        if(handler != null && runnable != null){
+    public void setTimeout(long time, final Dialog d){
+        if(!DEBUG){
+            handler = new Handler();
+            runnable = new Timeout(this, d);
+            handler.postDelayed(runnable, time);
+        }
+
+    protected void removeTimer() {
+        if (handler != null && runnable != null) {
             Log.d("DEBUG", "Callback Removed");
             handler.removeCallbacks(runnable);
         }
     }
 
-    public void finishLoad(int result){
+    public void finishLoad(int result) {
         removeTimer();
         onFinishLoad(result);
     }
 
-    public void failLoad(){
+    public void failLoad() {
         removeTimer();
         onLoadFailed();
     }
 
     protected abstract void onFinishLoad(int result);
+
     protected abstract void onLoadFailed();
+
     protected abstract void onTimeOut();
 
 }

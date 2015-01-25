@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by Colin on 1/25/2015.
  */
-public class Timeout implements Runnable{
+public class Timeout implements Runnable {
 
     WeakReference<Dialog> dialogWeakReference;
     WeakReference<ActivityWithLoading> activityWithLoadingWeakReference;
@@ -21,16 +21,15 @@ public class Timeout implements Runnable{
     }
 
     public void run() {
-        try{
+        try {
             Dialog dialog = dialogWeakReference.get();
             ActivityWithLoading activity = activityWithLoadingWeakReference.get();
 
-            if(dialog != null && activity != null) {
+            if (dialog != null && activity != null) {
                 dialog.dismiss();
                 activity.onTimeOut();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d("DEBUG", "Exception caught on timeout");
         }
     }

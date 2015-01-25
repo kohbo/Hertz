@@ -28,9 +28,9 @@ public class Login_Page extends ActivityWithLoading {
 
         setContentView(R.layout.loginscreen);
 
-        mLoginButton = (Button)findViewById(R.id.login_page_button);
-        mUserField = (EditText)findViewById(R.id.login_page_id_editText);
-        mPasswordField = (EditText)findViewById(R.id.login_page_password_editText);
+        mLoginButton = (Button) findViewById(R.id.login_page_button);
+        mUserField = (EditText) findViewById(R.id.login_page_id_editText);
+        mPasswordField = (EditText) findViewById(R.id.login_page_password_editText);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,35 +40,35 @@ public class Login_Page extends ActivityWithLoading {
         });
     }
 
-    protected void goToHomePage(){
+    protected void goToHomePage() {
         int userIdNumber;
         String userId = mUserField.getText().toString();
         String password = mPasswordField.getText().toString();
 
-        if(userId.equals("")){
-            Utilities.showToast(this,R.string.Error_empty_username);
+        if (userId.equals("")) {
+            Utilities.showToast(this, R.string.Error_empty_username);
             return;
         }
 
         try {
             userIdNumber = Integer.parseInt(userId);
-        }catch (NumberFormatException e){
-            Utilities.showToast(this,R.string.Error_invalid_id_format);
+        } catch (NumberFormatException e) {
+            Utilities.showToast(this, R.string.Error_invalid_id_format);
             return;
         }
 
-        if(password.equals("")){
-            Utilities.showToast(this,R.string.Error_empty_password);
+        if (password.equals("")) {
+            Utilities.showToast(this, R.string.Error_empty_password);
             return;
         }
 
-        if(!Utilities.isOnline(this)) {
-            Utilities.showToast(this,R.string.Error_no_connection);
+        if (!Utilities.isOnline(this)) {
+            Utilities.showToast(this, R.string.Error_no_connection);
             return;
         }
 
         ProgressDialog mDialog = startLoad();
-        VerifyCredentialsWorker task = new VerifyCredentialsWorker(this,mDialog,userIdNumber,password);
+        VerifyCredentialsWorker task = new VerifyCredentialsWorker(this, mDialog, userIdNumber, password);
         tasks.add(task);
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
@@ -76,18 +76,18 @@ public class Login_Page extends ActivityWithLoading {
 
     @Override
     public void onFinishLoad(int result) {
-        Intent intent = new Intent(this,Home_Page.class);
+        Intent intent = new Intent(this, Home_Page.class);
         startActivity(intent);
     }
 
     @Override
     public void onLoadFailed() {
-        Utilities.showToast(this,R.string.Error_invalid_id_password);
+        Utilities.showToast(this, R.string.Error_invalid_id_password);
     }
 
     @Override
     public void onTimeOut() {
-        Utilities.showToast(this,R.string.Error_timeout);
+        Utilities.showToast(this, R.string.Error_timeout);
     }
 
     @Override
